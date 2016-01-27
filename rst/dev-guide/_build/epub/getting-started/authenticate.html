@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Authenticate to the Rackspace Cloud</title>
+    
+    <link rel="stylesheet" href="../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> 
+  </head>
+  <body role="document">
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="use-API-directly.html" title="Create and manage secrets"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="send-request-ovw.html" title="Send requests to the API"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Rackspace Cloud Keep</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">&lt;no title&gt;</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="authenticate-to-the-rackspace-cloud">
+<span id="authenticate-to-cloud"></span><h1>Authenticate to the Rackspace Cloud</h1>
+<p>Whether you use cURL, a REST client, or a command line client (CLI) to send requests
+to the Rackspace Cloud Keep API, you need an authentication token to include in the <code class="docutils literal"><span class="pre">X-Auth-Token</span></code>
+header of each API request.</p>
+<p>With a valid token, you can send API requests to any of the API service endpoints that you
+are authorized to use. The authentication response includes a token expiration date. When a token
+expires, you can send another authentication request to get a new one.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For more information about authentication tokens, see the following topics in the
+Rackspace Cloud Identity developer documentation.</p>
+<ul class="last">
+<li><p class="first"><a class="reference external" href="http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-api-operations/token-operations">Authentication token operations</a><span class="link-target"> [http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-api-operations/token-operations]</span></p>
+<blockquote>
+<div><p>The examples in the Getting Started Guide show how to authenticate by using username and API key credentials,
+which is a more secure way to communicate with API services. The authentication
+token operations reference describes other types of credentials that you can use for
+authentication.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#manage-authentication-tokens">Manage tokens and token expiration</a><span class="link-target"> [http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#manage-authentication-tokens]</span></p>
+</li>
+</ul>
+</div>
+<p id="authenticate-using-curl">Follow these steps to authenticate to the Rackspace Cloud by
+<a class="reference internal" href="send-request-ovw.html#how-curl-commands-work"><span>using cURL</span></a>.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#send-auth-req-curl"><span>Send authentication request</span></a></li>
+<li><a class="reference internal" href="#review-auth-resp"><span>Review the authentication response</span></a></li>
+<li><a class="reference internal" href="#configure-environment-variables"><span>Configure environment variables</span></a></li>
+</ul>
+<div class="section" id="send-an-authentication-request">
+<span id="send-auth-req-curl"></span><h2>Send an authentication request</h2>
+<p>From a command prompt, send a <strong>POST tokens</strong> request to the Rackspace Cloud Identity
+service.  Include your username and <a class="reference internal" href="prerequisites-for-using-api.html#get-credentials"><span>API key</span></a>
+as shown in the following example.</p>
+<div class="code highlight-python" id="auth-curl-request"><div class="highlight"><pre>$ curl https://identity.api.rackspacecloud.com/v2.0/tokens  \
+ -X POST \
+ -d &#39;{&quot;auth&quot;:{&quot;RAX-KSKEY:apiKeyCredentials&quot;:{&quot;username&quot;:&quot;yourUserName&quot;,&quot;apiKey&quot;:&quot;$apiKey&quot;}}}&#39; \
+ -H &quot;Content-type: application/json&quot; \
+ | python -m json.tool
+</pre></div>
+</div>
+</div>
+<div class="section" id="review-the-authentication-response">
+<span id="review-auth-resp"></span><h2>Review the authentication response</h2>
+<p>If your credentials are valid, the Identity service returns an authentication response
+that includes the following information:</p>
+<ul class="simple">
+<li>an authentication token</li>
+<li>a service catalog with information about the services you can access.</li>
+<li>user information and role assignments</li>
+</ul>
+<p>In the following example, the ellipsis (...)  represents other service endpoints, which
+are not shown. The values shown in this and other examples vary because the information
+returned is specific to your account.</p>
+<p><strong>Example: Authentication response</strong></p>
+<div class="code highlight-python" id="auth-response-example"><div class="highlight"><pre>{
+        &quot;access&quot;: {
+                &quot;token&quot;: {
+                        &quot;id&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,
+                        &quot;expires&quot;: &quot;2014-11-24T22:05:39.115Z&quot;,
+                        &quot;tenant&quot;: {
+                                &quot;id&quot;: &quot;110011&quot;,
+                                &quot;name&quot;: &quot;110011&quot;
+                        },
+                        &quot;RAX-AUTH:authenticatedBy&quot;: [
+                                &quot;APIKEY&quot;
+                        ]
+                 },
+                &quot;serviceCatalog&quot;: [
+                        {
+                                &quot;name&quot;: &quot;cloudDatabases&quot;,
+                                &quot;endpoints&quot;: [
+                                        {
+                                        &quot;publicURL&quot;: &quot;https://syd.databases.api.rackspacecloud.com/v1.0/110011&quot;,
+                                        &quot;region&quot;: &quot;SYD&quot;,
+                                        &quot;tenantId&quot;: &quot;110011&quot;
+                                        },
+                                        {
+                                                &quot;publicURL&quot;: &quot;https://dfw.databases.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;region&quot;: &quot;DFW&quot;,
+                                                &quot;tenantId&quot;: &quot;110011&quot;
+                                        },
+                                        {
+                                                &quot;publicURL&quot;: &quot;https://ord.databases.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;region&quot;: &quot;ORD&quot;,
+                                                &quot;tenantId&quot;: &quot;110011&quot;
+                                        },
+                                        {
+                                                &quot;publicURL&quot;: &quot;https://iad.databases.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;region&quot;: &quot;IAD&quot;,
+                                                &quot;tenantId&quot;: &quot;110011&quot;
+                                        },
+                                        {
+                                                &quot;publicURL&quot;: &quot;https://hkg.databases.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;region&quot;: &quot;HKG&quot;,
+                                                &quot;tenantId&quot;: &quot;110011&quot;
+                                        }
+                                ],
+                                &quot;type&quot;: &quot;rax:database&quot;
+                        },
+
+                        ...
+
+                        {
+                                &quot;name&quot;: &quot;cloudDNS&quot;,
+                                &quot;endpoints&quot;: [
+                                        {
+                                                &quot;publicURL&quot;: &quot;https://dns.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;tenantId&quot;: &quot;110011&quot;
+                                        }
+                                ],
+                                &quot;type&quot;: &quot;rax:dns&quot;
+                        },
+                        {
+                                &quot;name&quot;: &quot;rackCDN&quot;,
+                                &quot;endpoints&quot;: [
+                                        {
+                                                &quot;internalURL&quot;: &quot;https://global.cdn.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;publicURL&quot;: &quot;https://global.cdn.api.rackspacecloud.com/v1.0/110011&quot;,
+                                                &quot;tenantId&quot;: &quot;110011&quot;
+                                        }
+                                ],
+
+                                &quot;type&quot;: &quot;rax:cdn&quot;
+                        }
+                ],
+                &quot;user&quot;: {
+                        &quot;id&quot;: &quot;123456&quot;,
+                        &quot;roles&quot;: [
+                                {
+                                        &quot;description&quot;: &quot;A Role that allows a user access to keystone Service methods&quot;,
+                                        &quot;id&quot;: &quot;6&quot;,
+                                        &quot;name&quot;: &quot;compute:default&quot;,
+                                        &quot;tenantId&quot;: &quot;110011&quot;
+                                },
+                                {
+                                        &quot;description&quot;: &quot;User Admin Role.&quot;,
+                                        &quot;id&quot;: &quot;3&quot;,
+                                        &quot;name&quot;: &quot;identity:user-admin&quot;
+                                }
+                        ],
+                        &quot;name&quot;: &quot;jsmith&quot;,
+                        &quot;RAX-AUTH:defaultRegion&quot;: &quot;ORD&quot;
+                }
+        }
+}
+</pre></div>
+</div>
+<p>If the request was successful, you can find the authentication token and other information in the
+authentication response. You&#8217;ll need these values to submit requests to the API. See
+<a class="reference internal" href="#configure-environment-variables"><span>Configure environment variables</span></a>.</p>
+<p>If the request failed, review the response message and
+the following error message descriptions to determine next steps.</p>
+<p><code class="docutils literal"><span class="pre">400</span> <span class="pre">Invalid</span> <span class="pre">request</span> <span class="pre">body:</span> <span class="pre">unable</span> <span class="pre">to</span> <span class="pre">parse</span> <span class="pre">Auth</span> <span class="pre">data.</span> <span class="pre">Please</span> <span class="pre">review</span> <span class="pre">XML</span> <span class="pre">or</span> <span class="pre">JSON</span> <span class="pre">formatting</span></code>: Review
+the authentication request for syntax or coding errors. If you are using cURL, see the
+<a class="reference internal" href="send-request-ovw.html#how-curl-commands-work"><span>Using cURL</span></a>.</p>
+<p><code class="docutils literal"><span class="pre">401</span> <span class="pre">Unable</span> <span class="pre">to</span> <span class="pre">authenticate</span> <span class="pre">user</span> <span class="pre">with</span> <span class="pre">credentials</span> <span class="pre">provided.</span></code>: Verify the authentication credentials
+submitted in the authentication request. If necessary, contact your Rackspace Cloud Administrator or
+Rackspace Support to get valid credentials.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For additional information about authentication errors, see the
+<a class="reference external" href="http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-api-operations/token-operations">Identity API Reference documentation</a><span class="link-target"> [http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#document-api-operations/token-operations]</span>.</p>
+</div>
+</div>
+<div class="section" id="configure-environment-variables">
+<span id="id1"></span><h2>Configure environment variables</h2>
+<p>The authentication response returns the following values that you
+need to include when you make service requests to the Rackspace Cloud Keep API.</p>
+<dl class="docutils">
+<dt>token ID</dt>
+<dd><p class="first">The token ID value is required to confirm your identity each time you access the service.
+Include it in the <code class="docutils literal"><span class="pre">X-Auth-Token</span></code> header for each API request.</p>
+<p class="last">The <code class="docutils literal"><span class="pre">expires</span></code> attribute indicates the date and time that the token will expire,
+unless it is revoked prior to the
+expiration. To get a new token, submit another authentication request. For more
+information, see
+<a class="reference external" href="http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#manage-authentication-tokens">Manage tokens and token expiration</a><span class="link-target"> [http://developer.rackspace.com/docs/cloud-identity/v2/developer-guide/#manage-authentication-tokens]</span>.</p>
+</dd>
+<dt>tenant ID</dt>
+<dd>The tenant ID provides your account number. For most Rackspace Cloud service APIs, the
+tenant ID is appended to the API endpoint in the service catalog automatically. You</dd>
+<dt>endpoint</dt>
+<dd>The API endpoint provides the URL that you use to access the API service. For guidance
+on choosing an endpoint, see <a class="reference internal" href="#service-access-endpoints"><span>Service access</span></a>.</dd>
+</dl>
+<p>To make it easier to include the values in API requests, use the export command to create
+environment variables that can be substituted for the actual values. For example, you can
+create an <code class="docutils literal"><span class="pre">API_ENDPOINT</span></code> variable to store the URL for accessing an API service.
+To reference the value in an API request, prefix the variable name with a $, for example
+<code class="docutils literal"><span class="pre">$API_ENDPOINT</span></code>.</p>
+<div class="admonition note" id="env-variables">
+<p class="first admonition-title">Note</p>
+<p>The environment variables created with the <code class="docutils literal"><span class="pre">export</span></code> command are
+valid only for the current terminal session. If you start a new session, run the
+export commands again.</p>
+<p class="last">To reuse the variables across sessions, update the configuration file for your shell
+environment to include the export statements. For details
+about using and managing environment variables on different systems, see the
+<a class="reference external" href="http://environmentvariables.org/">Environment variables wiki</a><span class="link-target"> [http://environmentvariables.org/]</span>.</p>
+</div>
+<p><strong>Create environment variables</strong></p>
+<ol class="arabic">
+<li><p class="first">In the <code class="docutils literal"><span class="pre">token</span></code> section of the authentication response, copy the token <code class="docutils literal"><span class="pre">id</span></code> and
+tenant <code class="docutils literal"><span class="pre">id</span></code> values from the token object.</p>
+<blockquote>
+<div><div class="code highlight-python"><div class="highlight"><pre>{
+          &quot;access&quot;: {
+                  &quot;token&quot;: {
+                          &quot;id&quot;: &quot;AA2345631l1NVdD6D1OCauKA0e9fioquZqVlS-hpbCqQ5Yx1zLOREGf4efBh10CfB5AvjC1yld4ZNJUouE7DA0QB0n5nRbdDsYADA-ORICIqHNqOVS_kYmedqDh75c_PLe123456789101&quot;,
+                          &quot;expires&quot;: &quot;2015-11-18T18:35:45.013Z&quot;,
+                          &quot;tenant&quot;: {
+                                  &quot;id&quot;: &quot;123456&quot;,
+                                  &quot;name&quot;: &quot;123456&quot;
+                          },
+                          &quot;RAX-AUTH:authenticatedBy&quot;: [
+                                  &quot;APIKEY&quot;
+                          ]
+  },
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Export the token ID to an environment variable
+that can be supplied in the <cite>X-Auth-Token</cite> header required in each
+API request.</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ export AUTH_TOKEN=&quot;token-id&quot;
+</pre></div>
+</div>
+<p>Replace <em>token-id</em> with the authentication token <code class="docutils literal"><span class="pre">id</span></code> value returned
+in the authentication response.</p>
+</li>
+<li><p class="first">Export the tenant ID to an environment variable
+that can be supplied in requests that require you to specify a tenant ID or tenant name.</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ export TENANT_ID=&quot;tenant-id&quot;
+</pre></div>
+</div>
+<p>Replace <em>tenant-id</em> with the authentication token <code class="docutils literal"><span class="pre">id</span></code> value returned
+in the authentication response.</p>
+</li>
+<li><p class="first">In the <code class="docutils literal"><span class="pre">service</span> <span class="pre">catalog</span></code> section of the authentication response, copy the <code class="docutils literal"><span class="pre">publicURL</span></code>
+value for the Rackspace Cloud Keep API, version, and region that you want to access.</p>
+<p>This example shows the endpoints available for the Rackspace Cloud Keep API.</p>
+<blockquote id="service-access-endpoints">
+<div><div class="highlight-json"><div class="highlight"><pre>        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cloudBlockStorage&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;endpoints&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;SYD&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;publicURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://syd.blockstorage.api.rackspacecloud.com/v1/123456&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;DFW&quot;</span><span class="p">,</span>
+</span>                <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;publicURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dfw.blockstorage.api.rackspacecloud.com/v1/123456&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;ORD&quot;</span><span class="p">,</span>
+</span>                <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;publicURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://ord.blockstorage.api.rackspacecloud.com/v1/123456&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;IAD&quot;</span><span class="p">,</span>
+</span>                <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;publicURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://iad.blockstorage.api.rackspacecloud.com/v1/123456&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+<span class="hll">                <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;HKG&quot;</span><span class="p">,</span>
+</span>                <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;publicURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://hkg.blockstorage.api.rackspacecloud.com/v1/123456&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+<span class="hll">        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;volume&quot;</span>
+</span>        <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Copy the URL, and then export it to an environment variable.</p>
+<div class="code highlight-python"><div class="highlight"><pre>$ export API_ENDPOINT=&quot;publicURL&quot;
+</pre></div>
+</div>
+<p>Replace <em>publicURL</em> with the publicURL value listed in the service catalog.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Rackspace.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
