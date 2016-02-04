@@ -26,4 +26,3 @@ Rackspace Cloud Keep  provides the following APIs:
    document-change-history
    additional-resources
    api-contract-changes
-   pricing-service-level
