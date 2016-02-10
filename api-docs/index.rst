@@ -27,3 +27,4 @@ requested encryption algorithm and bit length.
    general-api-info/index
    api-reference
    api-operations/index
+   copyright
