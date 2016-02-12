@@ -204,7 +204,7 @@ easily provided inside the JSON data in a one-step secret storage.</p>
 <li><p class="first">To follow the two-step process, first create the secret metadata in
 Barbican by sending a <strong>POST</strong> request as shown in the following
 example:</p>
-<div class="code highlight-python"><div class="highlight"><pre>curl -i -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;name&quot;: &quot;Binary Key File&quot;}&#39; http://endpointURL/v1/12345/secrets
+<div class="code highlight-python"><div class="highlight"><pre>curl -i -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;name&quot;: &quot;Binary Key File&quot;}&#39; https://endpointURL/v1/12345/secrets
 </pre></div>
 </div>
 <p>If the call is successfull, you receive a <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> response as
@@ -212,11 +212,11 @@ shown in the following example:</p>
 <div class="code highlight-python"><div class="highlight"><pre> HTTP/1.1 201 Created
  Content-Length: 93
   Content-Type: application/json; charset=utf-8
-Location: http://endpointURL/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
+Location: https://endpointURL/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
  x-openstack-request-id: req-ea090bd4-5bfc-47ae-a388-746485d947f1
 
  {
-   &quot;secret_ref&quot;: &quot;http://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b”
+   &quot;secret_ref&quot;: &quot;https://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b”
  }
 </pre></div>
 </div>
@@ -235,7 +235,7 @@ the current directory:</p>
 <li><p class="first">Next, submit a <strong>PUT</strong> request that includes the secret key file you
 just created as sghown in the following example:</p>
 <div class="code highlight-python"><div class="highlight"><pre>curl -i -X PUT -H &#39;Content-Type: application/octet-stream’ \
-     -T ./secret_key_file http://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
+     -T ./secret_key_file https://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
 </pre></div>
 </div>
 </li>

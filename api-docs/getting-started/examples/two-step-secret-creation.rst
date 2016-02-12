@@ -13,7 +13,7 @@ easily provided inside the JSON data in a one-step secret storage.
 
    .. code::
 
-        curl -i -H 'Content-Type: application/json' -d '{"name": "Binary Key File"}' http://endpointURL/v1/12345/secrets
+        curl -i -H 'Content-Type: application/json' -d '{"name": "Binary Key File"}' https://endpointURL/v1/12345/secrets
 
    If the call is successfull, you receive a ``200 OK`` response as
    shown in the following example:
@@ -23,11 +23,11 @@ easily provided inside the JSON data in a one-step secret storage.
         HTTP/1.1 201 Created
         Content-Length: 93
          Content-Type: application/json; charset=utf-8
-       Location: http://endpointURL/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
+       Location: https://endpointURL/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
         x-openstack-request-id: req-ea090bd4-5bfc-47ae-a388-746485d947f1
 
         {
-          "secret_ref": "http://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b”
+          "secret_ref": "https://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b”
         }
 
    The secret metadata is now stored in Barbican. You still need to
@@ -49,7 +49,7 @@ easily provided inside the JSON data in a one-step secret storage.
    .. code::
 
         curl -i -X PUT -H 'Content-Type: application/octet-stream’ \
-             -T ./secret_key_file http://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
+             -T ./secret_key_file https://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
 
 #. Barbican encrypts and stores the secret key file, associates it with
    the previously created metadata, and responds with an empty

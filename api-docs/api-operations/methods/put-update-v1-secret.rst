@@ -92,7 +92,7 @@ This operation does not accept a request body.
 .. code::
 
    curl -i -X PUT -H 'Content-Type: application/octet-stream' \
-        -T ./secret_key_file http://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
+        -T ./secret_key_file https://endpointURL/v1/12345/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
 
 
 
