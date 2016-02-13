@@ -3,8 +3,7 @@
 Concepts
 ----------
 
-his section describes the key terms and concepts that apply to Rackspace Cloud Keep, and
-provides an overview of the Rackspace Cloud Keep architecture.
+Review the following key terms and architectural overview to learn how you the Cloud Keep API enables secure life-cycle management for keys and credentials.
 
 
 .. _Barbican-dg-key-terms:
