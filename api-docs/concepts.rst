@@ -3,7 +3,7 @@
 Concepts
 ----------
 
-Review the following key terms and architectural overview to learn how you the Cloud Keep API enables secure life-cycle management for keys and credentials.
+Review the following key terms and architectural overview to learn how Cloud Keep enables secure life-cycle management for keys and credentials.
 
 
 .. _Barbican-dg-key-terms:
