@@ -120,5 +120,5 @@ Response
 .. code::
 
    {
-    "order_ref": "http://endpointURL/v1/12345/orders/62d57f53-ecfe-4ae4-87bd-fab2f24e29bc"
+    "order_ref": "https://endpointURL/v1/12345/orders/62d57f53-ecfe-4ae4-87bd-fab2f24e29bc"
    }

@@ -241,7 +241,7 @@ This table shows the body parameters for the request:
 
 .. code::
 
-   curl http://endpointURL/v1/secrets -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-Project-Id: 12345' -d \
+   curl https://endpointURL/v1/secrets -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-Project-Id: 12345' -d \
    '{
      "name": "key",
      "expiration": "2014-09-01T19:14:44.180394",
@@ -262,5 +262,5 @@ Response
 .. code::
 
    {
-       "secret_ref": "http://endpointURL/v1/secrets/94dc45d8-5232-4be7-8263-9ceeda7410a0"
+       "secret_ref": "https://endpointURL/v1/secrets/94dc45d8-5232-4be7-8263-9ceeda7410a0"
    }
