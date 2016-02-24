@@ -3,13 +3,13 @@
 Overview
 -----------
 
-Rackspace Cloud Keep is a REST API that enables secure life-cycle
+|product name| provides a REST API that enables secure life-cycle
 management of keys and credentials, called secrets, on behalf of
 customers. Using the API, you can securely store and retrieve credentials systematically 
 and enable users to have keys generated on their behalf based on their requested 
-requested encryption algorithm and bit length.
+encryption algorithm and bit length.
 
-Rackspace Cloud Keep provides the following APIs:
+|product name| provides the following APIs:
 
 -  Secrets API
 
