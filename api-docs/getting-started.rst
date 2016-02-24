@@ -14,12 +14,7 @@ and bit length.
 
 This guide provides an introduction into the Cloud Keep API and
 explains how to perform basic API calls. You'll learn how to authenticate, send API requests,
-and complete the basic operations for using the Cloud Block Storage API by using cURL.
+and complete basic operations with Cloud Keep API.
 
 For additional details
 about all of the API operations, see the :ref:`API reference <api-reference>`.
-
-.. note::
-		You can also access |apiservice| features from the `Rackspace Cloud Control Panel`_.
-
-.. _Rackspace Cloud Control Panel: https://mycloud.rackspace.com
