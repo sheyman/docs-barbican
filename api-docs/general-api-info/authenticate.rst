@@ -246,10 +246,12 @@ Locate the correct service name in the service catalog, as follows:
    choice. Select the appropriate endpoint for the region that you want
    to interact with by examining the ``region`` field.
 
-.. tip:: To help you decide which regionalized endpoint to use, read about
-   special considerations for choosing a data center at
-   http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions.
+.. tip:: 
 
+   To help you decide which regionalized endpoint to use, read about
+   special considerations for choosing a data center at
+   :how-to:`Rackspace Developer website <about-regions>`.
+   
 If you use the authentication token to access this service, you can perform Cloud Images
 API operations.
 
