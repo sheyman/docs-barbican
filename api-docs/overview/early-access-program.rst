@@ -3,17 +3,17 @@
 Early Access Program
 ~~~~~~~~~~~~~~~~~~~~~
 
-The Rackspace Cloud Keep API is now available to customers through an
-Early Access program. As the service progresses towards General
+|product name|is available to customers through an
+Early Access (EA) program. The EA program is an opportunity for customers to work
+in partnership with Rackspace to ensure that the implemented features
+align with business needs and can be used with maximum efficiency.
+
+As the service progresses towards General
 Availability, additional features and event notifications will be added,
 and it is possible that existing implementations and formats might
 change. 
 
-The Early Access program is an opportunity for customers to work
-in partnership with Rackspace to ensure that the implemented features
-align with business needs and can be used with maximum efficiency.
-
-Visit the [Cloud Keep Sign up](http://go.rackspace.com/cloud-keep.html) for details. 
+To learn more, visit the [Cloud Keep Sign up page](http://go.rackspace.com/cloud-keep.html). 
 
 
 .. note: 
