@@ -107,12 +107,9 @@ extlinks = {
     'rax-api': ('http:/developer.rackspace.com/docs/%s/developer-guide/#api-reference',''),
     'rax-git': ('https://github.com/rackspace/%s', ''),
     'mycloud': ('https://mycloud.rackspace.com/%s', ''),
-    'kc': ('http://www.rackspace.com/knowledge_center/%s', ''),
-    'kc-article': ('http://www.rackspace.com/knowledge_center/article/%s', ''),
-    'kc-faq': ('http://www.rackspace.com/knowledge_center/'
-               'frequently-asked-question/%s', ''),
-    'kc-product-faq': ('http://www.rackspace.com/knowledge_center/'
-                       'product-faq/%s', ''),
+    'rax-glossary': ('https://developer.rackspace.com/docs/glossary/%s', ''),
+    'mycloud': ('https://mycloud.rackspace.com/%s', ''),
+    'how-to': ('http://support.rackspace.com/how-to/%s', ''),
     'os': ('http://www.openstack.org/%s', ''),
     'os-docs': ('http://docs.openstack.org/%s', ''),
     'os-wiki': ('http://wiki.openstack.org/%s', ''),
@@ -185,7 +182,7 @@ html_static_path = []
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-#html_last_updated_fmt = ‘September 29, 2015’
+#html_last_updated_fmt = ‘’
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.

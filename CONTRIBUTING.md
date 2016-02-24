@@ -25,7 +25,7 @@ Content | File
 |About the API index| [overview/index.rst](https://github.com/rackerlabs/docs-barbican/blob/master/api-docs/overview/index.rst)
 |Getting Started Guide intro| [getting-started.rst](https://github.com/rackerlabs/docs-barbican/blob/master/api-docs/quickstart-guide.rst)
 |Getting Started Guide index| [getting-started/index.rst](https://github.com/rackerlabs/docs-barbican/blob/master/api-docs/getting-started/index.rst)
-|Common Getting Started Guide content| The ``commmon-gs`` folder contains content shared across the developer documentation. If changes are required, please submit an issue.
+|Common Getting Started Guide content| The ``commmon-gs`` folder contains content shared across the developer documentation. If changes are required, please [submit an issue](https://github.com/rackerlabs/docs-barbican/issues/new?title=Describe your common content issue or update request)
 |Developer Guide introduction|[developer-guide.rst](https://github.com/rackerlabs/docs-barbican/blob/master/api-docs/developer-guide.rst)
 |Concepts section| [concepts.rst](https://github.com/rackerlabs/docs-barbican/blob/master/api-docs/concepts.rst)
 |General API information index|[general-api-info/index.rst](https://github.com/rackerlabs/docs-barbican/blob/master/api-docs/general-api-info/index.rst)

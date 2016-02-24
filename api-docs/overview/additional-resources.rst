@@ -1,17 +1,24 @@
-.. _barbican-dg-additional-resources:
+.. _additional-resources:
 
 Additional resources
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
-You can download the most current versions of the Rackspace API-related
-documents from `docs.rackspace.com <http://docs.rackspace.com/>`__.
+We welcome feedback, comments, and bug reports. 
 
-Using this API document and your Rackspace Cloud account, you can get
-started whenever you'd like.
+- Send Cloud Keep feedback and support 
+  questions to keep@rackspace.com <mailto:keep@rackspace.com>`__.
 
-You can follow Rackspace updates and announcements via
-`Twitter <http://www.twitter.com/rackspace>`__.
+- For general issues about Rackspace products, visit the Rackspace 
+  `Product Feedback page`_. 
 
-This API uses standard HTTP 1.1 status codes as documented at `HTTP
-Status Code
-Definitions <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`__.
+- For product updates and announcement through Twitter, see http://twitter.com/rackspace.
+  
+- To learn about using Rackspace Cloud SDKs, see :rax-dev:`SDKs and tools<sdks>`. 
+    
+- To get information about the APIs for other Rackspace Cloud services, see the 
+  :rax-devdocs:`Rackspace API Documentation<>`.
+
+
+.. _Product Feedback page: https://feedback.rackspace.com/forums/298161-storage/suggestions/7119053-rackspace-cdn
+
+
