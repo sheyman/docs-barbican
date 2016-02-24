@@ -1,2 +1,2 @@
-api-docs/_build
+api-docs/_build/*
 .DS_Store
