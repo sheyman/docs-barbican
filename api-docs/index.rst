@@ -2,7 +2,7 @@
 .. _index:
 
 =============================================================
-Rackspace Cloud Keep API Developer Guide  - API v1.0
+Rackspace Cloud Keep API 1.0
 =============================================================
 
 *Last updated:* |today|
