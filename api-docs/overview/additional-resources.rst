@@ -6,7 +6,7 @@ Additional resources
 We welcome feedback, comments, and bug reports. 
 
 - Send Cloud Keep feedback and support 
-  questions to keep@rackspace.com <mailto:keep@rackspace.com>`__.
+  questions to keep@rackspace.com.
 
 - For general issues about Rackspace products, visit the Rackspace 
   `Product Feedback page`_. 
@@ -19,6 +19,8 @@ We welcome feedback, comments, and bug reports.
   :rax-devdocs:`Rackspace API Documentation<>`.
 
 
-.. _Product Feedback page: https://feedback.rackspace.com/forums/298161-storage/suggestions/7119053-rackspace-cdn
+.. _Product Feedback page: https://feedback.rackspace.com/
+
+
 
 
