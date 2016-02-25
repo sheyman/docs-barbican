@@ -7,12 +7,12 @@ Rackspace Cloud Keep API Developer Guide  - API v1.0
 
 *Last updated:* |today|
 
-Rackspace Cloud Keep is a REST API that enables secure life-cycle
-management of keys and credentials, called secrets, on behalf of
-customers. This is especially important for customers who want to
-securely store and retrieve credentials systematically, and enables
-customers to have keys generated on their behalf based on their
-requested encryption algorithm and bit length.
+Use the following links to jump directly to user and reference information for 
+using the |apiservice|. 
+
+* :ref:`Getting Started Guide<getting-started>`
+* :ref:`Developer Guide<developer-guide>`
+* :ref:`API Reference<api-reference>`
 
 .. toctree:: :hidden:
    :maxdepth: 2
