@@ -1,7 +1,7 @@
 .. _barbican-dg-overview:
 
-Overview
------------
+About the API
+---------------
 
 |product name| provides a REST API that enables secure life-cycle
 management of keys and credentials, called secrets, on behalf of
