@@ -1,7 +1,7 @@
 .. _service-access-endpoints:
 
  .. code-block:: json
-    :emphasize-lines: 10
+    :emphasize-lines: 5
 
             {
                 "name": "cloudKeep",
