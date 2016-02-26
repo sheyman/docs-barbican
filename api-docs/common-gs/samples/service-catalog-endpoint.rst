@@ -1,36 +1,16 @@
 .. _service-access-endpoints:
 
  .. code-block:: json
-    :emphasize-lines: 10, 15, 20, 25, 30
+    :emphasize-lines: 5
 
             {
-                "name": "cloudBlockStorage",
+                "name": "cloudKeep",
                 "endpoints": [
-                {
-                    "region": "SYD",
-                    "tenantId": "123456",
-                    "publicURL": "https://syd.blockstorage.api.rackspacecloud.com/v1/123456"
-                },
-                {
-                    "region": "DFW",
-                    "tenantId": "123456",
-                    "publicURL": "https://dfw.blockstorage.api.rackspacecloud.com/v1/123456"
-                },
-                {
-                    "region": "ORD",
-                    "tenantId": "123456",
-                    "publicURL": "https://ord.blockstorage.api.rackspacecloud.com/v1/123456"
-                },
-                {
-                    "region": "IAD",
-                    "tenantId": "123456",
-                    "publicURL": "https://iad.blockstorage.api.rackspacecloud.com/v1/123456"
-                },
-                {
-                    "region": "HKG",
-                    "tenantId": "123456",
-                    "publicURL": "https://hkg.blockstorage.api.rackspacecloud.com/v1/123456"
-                }
-            ],
-            "type": "volume"
+                    {
+                        "region": "IAD",
+                        "tenantId": "123456",
+                        "publicURL": "https://iad.keep.api.rackspacecloud.com"
+                    }
+                ],
+                "type": "key-manager"
             }
