@@ -3,18 +3,14 @@
 Concepts
 ----------
 
-Review the following key terms and architectural overview to learn how Cloud Keep enables secure life-cycle management for keys and credentials.
+Review the following key concepts and architectural overview to learn how Cloud Keep 
+enables secure life-cycle management for keys and credentials.
 
-
-.. _Barbican-dg-key-terms:
-
-Rackspace Cloud Keep key terms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _Barbican-dg-secrets:
 
 Secrets
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 A secret can be any data that requires security conscious storage. This
 may be reflected as a key, credentials, config file, etc.
@@ -91,7 +87,7 @@ You can use one of the following methods to store a secret:
 .. _Barbican-dg-orders:
 
 Order
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 An order is a request to Barbican to create a secret of a particular
 type. This may include specifying an encryption algorithm or bit length,
@@ -105,7 +101,7 @@ depending on the type of secret.
 .. _Barbican-dg-containers:
 
 Container
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 A container is a way to logically group secrets that may be of a similar
 type; for example, grouping a private key, certificate, and bundle for
@@ -249,7 +245,7 @@ key pass phrases.
 .. _Barbican-dg-certificates:
 
 Certificate
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 Certificates are requested using the Orders interface.  Detailed description of this interface
 is deferred to the Orders API reference.  This reference identifies the parameters that are specific
@@ -259,7 +255,7 @@ is "certificate".
 .. _Barbican-dg-quotas:
 
 Quotas
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 All users authenticated with Cloud Keep are able to read the effective quota values
 that apply to their project. Cloud Keep can derive the project that a user belongs
@@ -311,7 +307,7 @@ explicit project quotas have been set for the current project.
 
 
 Consumer
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 A consumer is a way to to register as an interested party for a container.
 All of the registered consumers can be viewed by performing a GET on the {container_ref}/consumers. The idea being that before a container is deleted all consumers
