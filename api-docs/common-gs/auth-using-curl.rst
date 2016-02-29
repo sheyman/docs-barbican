@@ -53,12 +53,17 @@ the authentication request for syntax or coding errors. If you are using cURL, s
 :ref:`Using cURL<how-curl-commands-work>`.
           
 
-``401 Unable to authenticate user with credentials provided.``: Verify the authentication credentials 
+``401 Unable to authenticate user with credentials provided``: Verify the authentication credentials 
 submitted in the authentication request. If necessary, contact your Rackspace Cloud Administrator or 
 Rackspace Support to get valid credentials.
+          
+
+``403 Forbidden. Not Authorized``: Verify that your user has the correct service catalog entry and
+roles to access the Cloud Keep service. If necessary, contact your Rackspace Cloud Administrator or 
+Rackspace Support to verify your authorization to use Cloud Keep.
 
 ..  note:: 
-       For additional information about authentication errors, see the 
+       For additional information about authentication and authorization errors, see the 
        :rax-devdocs:`Identity API Reference documentation <cloud-identity/v2/developer-guide/#document-api-operations/token-operations>`.
 
 
@@ -83,9 +88,11 @@ token ID
     <cloud-identity/v2/developer-guide/#manage-authentication-tokens>`.
     
 tenant ID
-    The tenant ID provides your account number. For most Rackspace Cloud service APIs, the 
-    tenant ID is appended to the API endpoint in the service catalog automatically. You 
-     
+    The tenant ID provides your account number. Although Rackspace Cloud Keep does not require you to specify 
+    the tenant ID in API requests, many other Rackspace Cloud service APIs do require it. When it is required, 
+    the endpoint provided in the service catalog typically includes the tenant ID, which is automatically 
+    appended to the endpoint URL for the service.
+    
 endpoint 
 	The API endpoint provides the URL that you use to access the API service. For guidance 
 	on choosing an endpoint, see :ref:`Service access<service-access-endpoints>`.
@@ -125,7 +132,7 @@ To reference the value in an API request, prefix the variable name with a $, for
 
        $ export TENANT_ID="tenant-id"
 
-   Replace *tenant-id* with the authentication token ``id`` value returned 
+   Replace *tenant-id* with the authentication token ``tenant id`` value returned 
    in the authentication response.        
         
 #. In the ``service catalog`` section of the authentication response, copy the ``publicURL`` 
