@@ -4,7 +4,7 @@ Create and manage secrets
 ---------------------------------------------- 
 
 You can use the simple examples in the following sections for basic Cloud Keep
-requests that you will commonly use to create and manage volumes and snapshots by using
+requests that you will commonly use to create and manage secrets by using
 Cloud Keep API operations. Example requests are provided in
 cURL, followed by the response.
 
@@ -17,3 +17,4 @@ For more information about all Cloud Keep operations, see the
 .. include:: examples/retrieve-a-secret.rst
 .. include:: examples/retrieve-list-of-secrets.rst
 .. include:: examples/two-step-secret-creation.rst
+
