@@ -52,8 +52,15 @@ following:
 
         "{"secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/578391c7-92fa-484f-8546-3562b170e5"}"
 
+
 The example above shows the secretId (578391c7-92fa-484f-8546-3562b170e5), which will be returned in a
 successful response from the endpoint https://iad.keep.api.rackspacecloud.com.
+
+For subsequent API calls requiring a secret ID, you should set an environment variable as follows:
+
+.. code::
+
+      export SECRET_ID=578391c7-92fa-484f-8546-3562b170e5
 
 ..  note::
 
