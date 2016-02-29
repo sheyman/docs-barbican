@@ -88,10 +88,11 @@ token ID
     <cloud-identity/v2/developer-guide/#manage-authentication-tokens>`.
     
 tenant ID
-    The tenant ID provides your account number. Rackspace Cloud Keep does not require your
-    tenant ID explicitly in its URLs. However many other Rackspace Cloud service APIs will 
-    appended the tenant ID to the API endpoint in the service catalog automatically.
-     
+    The tenant ID provides your account number. Although Rackspace Cloud Keep does not require you to specify 
+    the tenant ID in API requests, many other Rackspace Cloud service APIs do require it. When it is required, 
+    the endpoint provided in the service catalog typically includes the tenant ID, which is automatically 
+    appended to the endpoint URL for the service.
+    
 endpoint 
 	The API endpoint provides the URL that you use to access the API service. For guidance 
 	on choosing an endpoint, see :ref:`Service access<service-access-endpoints>`.
