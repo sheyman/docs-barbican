@@ -131,7 +131,7 @@ To reference the value in an API request, prefix the variable name with a $, for
 
        $ export TENANT_ID="tenant-id"
 
-   Replace *tenant-id* with the authentication token's tenant ``id`` value returned 
+   Replace *tenant-id* with the authentication token ``tenant id`` value returned 
    in the authentication response.        
         
 #. In the ``service catalog`` section of the authentication response, copy the ``publicURL`` 
