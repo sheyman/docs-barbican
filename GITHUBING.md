@@ -76,7 +76,7 @@ or another GitHub GUI instead to accomplish the steps.
 
     b. Click on the Create pull request button
 
-    c. If this PR is related to an outstanding github 
+    c. If this PR is related to an outstanding 
       [GitHub issue](https://github.com/rackerlabs/docs-barbican/issues), include a link to that GitHub issue in the comment
 
 11. The Information Development team will review your pull request. 
