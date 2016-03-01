@@ -8,8 +8,8 @@ request to retrieve either the secret metadata or the actual decrypted
 secret, depending on the URL that is used in the
 **GET** request.
 
-- To retrieve only the secret metadata, submit the request to the /v1/secrets/$SECRET_ID resource 
-- To retrieve the decrypted secret, submit the request to the /v1/secrets/$SECRET_ID/payload resource 
+- To retrieve only the secret metadata, submit the request to the ``/v1/secrets/$SECRET_ID`` resource.
+- To retrieve the decrypted secret, submit the request to the ``/v1/secrets/$SECRET_ID/payload`` resource. 
 
 **Example: Retrieve secret metadata request**
 
