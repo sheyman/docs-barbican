@@ -7,7 +7,7 @@ Review the following key concepts and architectural overview to learn how Cloud 
 enables secure life-cycle management for keys and credentials.
 
 
-.. _Barbican-dg-secrets:
+.. _secrets-concept:
 
 Secrets
 ~~~~~~~~~~~~~~~~~~
