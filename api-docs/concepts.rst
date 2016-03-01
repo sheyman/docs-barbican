@@ -1,4 +1,4 @@
-.. _barbican-dg-concepts:
+.. _concepts:
 
 Concepts
 ----------
