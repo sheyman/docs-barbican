@@ -8,20 +8,22 @@ request to retrieve either the secret metadata or the actual decrypted
 secret, depending on the URL that is used in the
 **GET** request.
 
-A **GET** to the /v1/secrets/$SECRET_ID resource will return only the secret metadata.
+- To retrieve only the secret metadata, submit the request to the ``/v1/secrets/$SECRET_ID`` resource.
+- To retrieve the decrypted secret, submit the request to the ``/v1/secrets/$SECRET_ID/payload`` resource. 
 
-A **GET** to the /v1/secrets/$SECRET_ID/payload resource will return the decrypted secret itself. 
+**Example: Retrieve secret metadata request**
 
-The following example shows how to retrieve secret metadata by
-submitting a **GET** request against the endpoint URL with the tenant ID
-and secret ID specified.
+The following example retrieves the secret metadata by
+submitting a **GET** request against the endpoint URL with the secret ID specified.
 
 .. code::
 
-      curl -H 'X-Auth-Token: '$AUTH_TOKEN $API_ENDPOINT/v1/secrets/$SECRET_ID | python -m json.tool
+      curl -i -X GET $API_ENDPOINT/v1/secrets/$SECRET_ID  \
+           -H "X-Auth-Token: $AUTH_TOKEN" \
+     
 
-If the call is successful, you receive a response like the following (assuming your API_ENDPOINT
-is https://iad.keep.api.rackspacecloud.com:
+If the call is successful, the response looks like the following example, assuming that your API_ENDPOINT
+is ``https://iad.keep.api.rackspacecloud.com``:
 
 .. code::
 
@@ -42,18 +44,16 @@ is https://iad.keep.api.rackspacecloud.com:
         "updated": "2016-02-29T19:25:31.999733"
     }
 
+**Example: Retrieve decrypted secret request**
+
 The following example shows how to retrieve the secret payload by
-submitting a **GET** request against the endpoint URL with the tenant ID
-and secret ID specified.
+submitting a **GET** request against the endpoint URL with the secret ID specified.
 
 .. code::
 
-      curl -H 'X-Auth-Token: '$AUTH_TOKEN $API_ENDPOINT/v1/secrets/$SECRET_ID/payload
+      curl -i -X GET $API_ENDPOINT/v1/secrets/$SECRET_ID/payload \
+           -H "X-Auth-Token: $AUTH_TOKEN" \
 
 If the call is successful, you receive a response containing the decrypted secret.
 
-..  note::
-
-      Note
-      The /payload shown above on the URL tells the API to return the secret's payload.  If you omit /payload then you will get just the secret metadata.
 
