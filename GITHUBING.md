@@ -21,7 +21,7 @@ or another GitHub GUI instead to accomplish the steps.
 
     ```bash
 
-    git clone git@github.com:my-github-username/docs-cloud-identity.git
+    git clone git@github.com:my-github-username/docs-barbican.git
 
     ```
 
@@ -29,7 +29,7 @@ or another GitHub GUI instead to accomplish the steps.
     
     ```bash
     cd getcarina.com
-    git remote add --track master upstream git@github.com:rackerlabs/docs-cloud-identity.git
+    git remote add --track master upstream git@github.com:rackerlabs/docs-barbican.git
     
     ```
     Start new changes with the following steps.
@@ -77,7 +77,7 @@ or another GitHub GUI instead to accomplish the steps.
     b. Click on the Create pull request button
 
     c. If this PR is related to an outstanding github 
-      [GitHub issue](https://github.com/rackerlabs/docs-cloud-identity/issues), include a link to that GitHub issue in the comment
+      [GitHub issue](https://github.com/rackerlabs/docs-barbican/issues), include a link to that GitHub issue in the comment
 
 11. The Information Development team will review your pull request. 
 
