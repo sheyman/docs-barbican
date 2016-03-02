@@ -124,11 +124,7 @@ following example.
             "updated": "2016-02-29T15:54:34.485707"
         }
     ],
-    "total": 23
-    
-    .. note:: 
-    
-         If additional secrets have been stored, the returned data contains 
-         ``next`` and ``previous`` links that you can use to page through the data.
-    
+    "total": 23    
     }
+
+
