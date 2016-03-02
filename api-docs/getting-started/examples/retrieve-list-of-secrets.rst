@@ -18,7 +18,7 @@ with the first.
 
 .. code::
     
-    curl -X GET $API_ENDPOINT/v1/secrets?limit=5\&offset=0 \
+    $ curl -X GET $API_ENDPOINT/v1/secrets?limit=5\&offset=0 \
          -H "Accept: application/json" \
          -H "X-Auth-Token: $AUTH_TOKEN" \
          -H "Content-Type: application/json" \

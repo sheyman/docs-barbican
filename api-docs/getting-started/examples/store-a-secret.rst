@@ -31,7 +31,7 @@ parameter:
 
 .. code::
 
-      curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json'\
+      $ curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json'\
       -H 'X-Auth-Token: '$AUTH_TOKEN -d\
         '{
             "name": "AES key",
@@ -60,7 +60,7 @@ For subsequent API calls requiring a secret ID, you should set an environment va
 
 .. code::
 
-      export SECRET_ID=578391c7-92fa-484f-8546-3562b170e5
+      $ export SECRET_ID=578391c7-92fa-484f-8546-3562b170e5
 
 ..  note::
 
