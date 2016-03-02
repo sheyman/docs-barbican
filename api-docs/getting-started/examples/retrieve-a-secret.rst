@@ -18,8 +18,8 @@ submitting a **GET** request against the endpoint URL with the secret ID specifi
 
 .. code::
 
-      curl -i -X GET $API_ENDPOINT/v1/secrets/$SECRET_ID  \
-           -H "X-Auth-Token: $AUTH_TOKEN" \
+      curl -X GET $API_ENDPOINT/v1/secrets/$SECRET_ID  \
+           -H "X-Auth-Token: $AUTH_TOKEN" | python -m json.tool
      
 
 If the call is successful, the response looks like the following example, assuming that your API_ENDPOINT
@@ -51,8 +51,8 @@ submitting a **GET** request against the endpoint URL with the secret ID specifi
 
 .. code::
 
-      curl -i -X GET $API_ENDPOINT/v1/secrets/$SECRET_ID/payload \
-           -H "X-Auth-Token: $AUTH_TOKEN" \
+      curl -X GET $API_ENDPOINT/v1/secrets/$SECRET_ID/payload \
+           -H "X-Auth-Token: $AUTH_TOKEN"
 
 If the call is successful, you receive a response containing the decrypted secret.
 
