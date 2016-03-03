@@ -13,7 +13,7 @@ easily provided inside the JSON data in a one-step secret storage.
 
    .. code::
 
-        curl -i -X POST -H 'Content-Type: application/json' -H 'X-Auth-Token: '$AUTH_TOKEN -d \ '{"name": "Binary Key File"}' $API_ENDPOINT/v1/secrets
+        $ curl -i -X POST -H 'Content-Type: application/json' -H 'X-Auth-Token: '$AUTH_TOKEN -d \ '{"name": "Binary Key File"}' $API_ENDPOINT/v1/secrets
 
    If the call is successfull, you receive a ``201 Created`` response as
    shown in the following example:
@@ -39,7 +39,7 @@ easily provided inside the JSON data in a one-step secret storage.
 
 .. code::
 
-        export SECRET_ID=943c8f98-e980-4cc4-0da1-8ed0993bcf55
+        $ export SECRET_ID=943c8f98-e980-4cc4-0da1-8ed0993bcf55
 
 #. Next, create a file with random data to be used as a secret key file.
    The following command creates a 5KB file that contains random data in
@@ -47,14 +47,14 @@ easily provided inside the JSON data in a one-step secret storage.
 
    .. code::
 
-        dd if=/dev/random of=secret_key_file count=5 bs=1024
+        $ dd if=/dev/random of=secret_key_file count=5 bs=1024
 
 #. Next, submit a **PUT** request that includes the secret key file you
    just created as shown in the following example:
 
    .. code::
 
-        curl -i -X PUT -H 'Content-Type: application/octet-stream'\
+        $ curl -i -X PUT -H 'Content-Type: application/octet-stream'\
              -H 'X-Auth-Token: '$AUTH_TOKEN \
              -T ./secret_key_file $API_ENDPOINT/v1/secrets/$SECRET_ID
 
