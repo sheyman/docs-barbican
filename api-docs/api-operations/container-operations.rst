@@ -3,7 +3,7 @@
 Container API Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This section describes the Container API operations for Cloud Keep.
+This section describes the Container API operations for |product name|.
 
 
 .. include:: methods/post-create-v1-container.rst

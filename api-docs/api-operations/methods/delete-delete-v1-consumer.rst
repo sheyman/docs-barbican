@@ -6,10 +6,10 @@ Delete a consumer
 
 .. code::
 
-    DELETE {container_ref}/consumers
+    DELETE /{version}/{container_ref}/consumers/{consumer_id}
 
 
-Deletes a consumer.
+Deletes the specified consumer for the specified container.
 
 
 +------+-----------------------------------------------------------------------------+
@@ -33,12 +33,17 @@ This operation does not accept a request body.
 
 .. code::
 
-    DELETE {container_ref}/consumers
-    Headers: X-Project-Id: {project_id}
+   curl -X DELETE -H 'X-Auth-Token: {authToken}' \
+        https://{endpoint}/v1/containers/{containerID}/consumers/{consumerID}
 
+where
 
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {containerID} is the UUID for the container
+- {consumerID} is the UUID for the consumer to be deleted from the container
 
 Response
 """"""""""""""""
 
-This operation does not return a response body.
+This operation will return an HTTP 204 for a successful delete.  It does not return a response body.

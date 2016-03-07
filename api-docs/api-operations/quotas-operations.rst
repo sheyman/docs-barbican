@@ -4,7 +4,7 @@ Quota API Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-This section describes the Quota API operations for Rackspace Cloud Keep:
+This section describes the Quota API operations for |product name|:
 
 
 .. include:: methods/get-get-v1-project-quotas.rst

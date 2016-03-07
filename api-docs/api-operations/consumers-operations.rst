@@ -3,7 +3,7 @@
 Consumers API Operations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This section describes the Consumers API operations for Cloud Keep.
+This section describes the Consumers API operations for |product name|.
 
 
 .. include:: methods/get-get-v1-containers-consumers.rst

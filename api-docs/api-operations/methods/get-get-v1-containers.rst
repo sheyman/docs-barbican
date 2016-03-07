@@ -6,23 +6,34 @@ Get Containers
 
 .. code::
 
-    GET /{version}/{tenantId}/containers
+    GET /{version}/containers
 
-Lists a project's containers.
+Returns a list of a project's containers.
 
 Returned containers will be ordered by creation date; oldest to newest.
 
 This table shows the possible response codes for this operation:
 
 
-
-+------+-----------------------------------------------------------------------------+
-| Code | Description                                                                 |
-+======+=============================================================================+
-| 200  | Successful Request                                                          |
-+------+-----------------------------------------------------------------------------+
-| 401  | Invalid X-Auth-Token or the token doesn't have permissions to this resource |
-+------+-----------------------------------------------------------------------------+
++--------------------------+-------------------------+-------------------------+
+|Response Code             |Name                     |Description              |
++==========================+=========================+=========================+
+|200                       |OK                       |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |containers have been     |
+|                          |                         |successfully retrieved   |
+|                          |                         |for the tenant.          |
++--------------------------+-------------------------+-------------------------+
+|401                       |Unauthorized             |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |user was not succesfully |
+|                          |                         |authenticated.           |
++--------------------------+-------------------------+-------------------------+
+|403                       |Forbidden                |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |user does not have the   |
+|                          |                         |correct RBAC role(s).    |
++--------------------------+-------------------------+-------------------------+
 
 
 Request
@@ -50,8 +61,15 @@ This operation does not accept a request body.
 
 .. code::
 
-    curl -H 'Accept: application/json' -H 'X-Project-Id:12345'\
-    https://endpointURL/v1/containers
+    curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
+    https://{endpoint}/v1/containers?offset={offset}&limit={limit}
+
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {offset} is the offset into the list of containers where the returned list will start
+- {limit} is the max number of containers to return in the list
 
 
 Response

@@ -6,7 +6,7 @@ Create a container
 
 .. code::
 
-    POST /v1/containers
+    POST /{version}/containers
 
 Creates a container.
 
@@ -51,17 +51,7 @@ Request
 """"""""""""""""
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Barbican service     |
-+--------------------------+-------------------------+-------------------------+
-
+There are no URL parameters for this request.
 
 
 This table shows the body parameters for the request:
@@ -85,18 +75,23 @@ This table shows the body parameters for the request:
 
 .. code::
 
-      curl -X POST -d \
+      curl -X POST -H 'X-Auth-Token {authToken} -d \
         '{
             "type": "generic",
             "name": "container name",
             "secret_refs": [
                 {
                     "name": "private_key",
-                    "secret_ref": "https://{barbican_host}/v1/secrets/{secret_uuid}"
+                    "secret_ref": "https://{endpoint}/v1/secrets/{secretID}"
                 }
             ]
-        }'\
-      https://endpointURL/v1/containers
+        }' https://{endpoint}/v1/containers
+
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {secretID} is the UUID for the secret to be added in the container.
 
 
 
@@ -111,5 +106,8 @@ Response
 .. code::
 
    {
-       "container_ref": "https://{barbican_host}/v1/containers/{container_uuid"
+       "container_ref": "https://{endpoint}/v1/containers/39dc45d8-4932-9ce7-8263-d9beda7410a0"
    }
+
+The container ID is the UUID returned as the last part of the URL.  For this example, 
+the container ID is 39dc45d8-4932-9ce7-8263-d9beda7410a0.

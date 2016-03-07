@@ -6,7 +6,7 @@ Get a container's consumers
 
 .. code::
 
-    GET /{container_ref}/consumers
+    GET /{version}/containers/{container_ref}/consumers
 
 
 Lists a container's consumers.
@@ -16,13 +16,25 @@ The list of consumers can be filtered by the parameters passed in via the URL.
 This table shows the possible response codes for this operation:
 
 
-+------+-----------------------------------------------------------------------------+
-| Code | Description                                                                 |
-+======+=============================================================================+
-| 200  | Successful Request                                                          |
-+------+-----------------------------------------------------------------------------+
-| 401  | Invalid X-Auth-Token or the token doesn't have permissions to this resource |
-+------+-----------------------------------------------------------------------------+
++--------------------------+-------------------------+-------------------------+
+|Response Code             |Name                     |Description              |
++==========================+=========================+=========================+
+|200                       |OK                       |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |consumers have been      |
+|                          |                         |successfully retrieved   |
+|                          |                         |for the tenant.          |
++--------------------------+-------------------------+-------------------------+
+|401                       |Unauthorized             |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |user was not succesfully |
+|                          |                         |authenticated.           |
++--------------------------+-------------------------+-------------------------+
+|403                       |Forbidden                |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |user does not have the   |
+|                          |                         |correct RBAC role(s).    |
++--------------------------+-------------------------+-------------------------+
 
 
 Request
@@ -47,18 +59,16 @@ The following table shows the URI parameters for the request:
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Project-Id:12345'\
-   https://endpointURL/v1/{container_ref}/consumers
+    curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
+    https://{endpoint}/v1/containers/{containerID}/consumers/?offset={offset}&limit={limit}
 
+where:
 
-
-**Example Get container's consumers with offset and limit parameters: JSON request**
-
-
-   .. code::
-
-      curl -H 'Accept: application/json' -H 'X-Project-Id:12345'\
-      https://endpointURL/v1/{container_ref}/consumers?limit=1&offset=1
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {containerID} is a the UUID for the container
+- {offset} is the offset into the list of consumers where the returned list will start
+- {limit} is the max number of consumers to return in the list
 
 
 Response
@@ -121,7 +131,7 @@ The following table shows the response parameters for this request.
 
      {
          "total": 3,
-         "next": "http://localhost:9311/v1/consumers?limit=1&offset=2",
+         "next": "https://{endpoint}/v1/containers/{containerID}/consumers?limit=1&offset=2",
          "consumers": [
             {
                 "status": "ACTIVE",
@@ -131,5 +141,5 @@ The following table shows the response parameters for this request.
                 "created": "2015-10-15T21:17:08.092408"
             }
         ],
-        "previous": "http://localhost:9311/v1/consumers?limit=1&offset=0"
+        "previous": "https://{endpoint}/v1/containers/{containerID}/consumers?limit=1&offset=0"
      }

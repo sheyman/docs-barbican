@@ -6,7 +6,7 @@ Delete a container
 
 .. code::
 
-    DELETE /v1/containers/{uuid}
+    DELETE /{version}/containers/{container_id}
 
 Deletes a container.
 
@@ -34,11 +34,16 @@ This operation does not accept a request body.
 
 .. code::
 
-      DELETE /v1/containers/{container_uuid}
-      Headers:
-      X-Project-Id: {project_id}
+   curl -X DELETE -H 'X-Auth-Token: {authToken}' \
+        https://{endpoint}/v1/containers/{containerID}
+
+where
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {containerID} is the UUID for the container to be deleted.
 
 Response
 """"""""""""""""
 
-The operation does not return a response body.
+This operation will return an HTTP 204 for a successful delete.  It does not return a response body.

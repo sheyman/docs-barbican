@@ -6,17 +6,15 @@ Get Container Information
 
 .. code::
 
-    GET /v1/containers/{container_uuid}
+    GET /{version}/containers/{container_id}
 
 This method retrieves information about a specified container.
-
-This method retrieves information for the specified order including a link to the secret that was stored as a result of the order (if available).
 
 
 This table shows the possible response codes for this operation:
 
 
-++------+-----------------------------------------------------------------------------+
++------+-----------------------------------------------------------------------------+
 | Code | Description                                                                 |
 +======+=============================================================================+
 | 200  | Successful Request                                                          |
@@ -36,12 +34,7 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Cloud Keep service.  |
-+--------------------------+-------------------------+-------------------------+
-|{container_uuid}          |String *(Required)*      |This parameter specifies |
+|{container_id}            |String *(Required)*      |This parameter specifies |
 |                          |                         |the unique identifier of |
 |                          |                         |a container that has     |
 |                          |                         |been stored.             |
@@ -58,9 +51,15 @@ This operation does not accept a request body.
 
 .. code::
 
-      curl -H 'Accept: application/json' -H 'X-Project-Id:12345'\
-      https://endpointURL/v1/containers/{container_uuid}
+      curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}' \
+         https://{endpoint}/v1/containers/{containerID}
 
+
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {containerID} is the ID of the container for which we want the information
 
 
 Response
@@ -77,11 +76,11 @@ Response
         "status": "ACTIVE",
         "name": "container name",
         "consumers": [],
-        "container_ref": "https://{barbican_host}/v1/containers/{uuid}",
+        "container_ref": "https://{endpoint}/v1/containers/{container_id}",
         "secret_refs": [
           {
               "name": "private_key",
-              "secret_ref": "https://{barbican_host}/v1/secrets/{uuid}"
+              "secret_ref": "https://{endpoint}/v1/secrets/{secretID}"
           }
         ],
         "created": "2015-03-26T21:10:45.417835",

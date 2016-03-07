@@ -6,11 +6,9 @@ Get Secrets
 
 .. code::
 
-    GET /{version}/{tenantId}/secrets
+    GET /{version}/secrets
 
 This method retrieves all secrets for a given tenant.
-
-This method lists all the secrets for a tenant.
 
 
 
@@ -20,48 +18,83 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |Error                    |This status code is      |
+|200                       |OK                       |This status code is      |
 |                          |                         |returned when the        |
 |                          |                         |secrets have been        |
 |                          |                         |successfully retrieved   |
 |                          |                         |for the tenant.          |
++--------------------------+-------------------------+-------------------------+
+|401                       |Unauthorized             |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |user was not succesfully |
+|                          |                         |authenticated.           |
++--------------------------+-------------------------+-------------------------+
+|403                       |Forbidden                |This status code is      |
+|                          |                         |returned when the        |
+|                          |                         |user does not have the   |
+|                          |                         |correct RBAC role(s).    |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
 """"""""""""""""
 
-
 This table shows the URI parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Barbican service     |
-+--------------------------+-------------------------+-------------------------+
++--------+---------+------------------------------------------------------------+
+| Name   | Type    | Description                                                |
++========+=========+============================================================+
+| offset | integer | The starting index within the total list of the secrets    |
+|        |         | that you would like to retrieve.                           |
++--------+---------+------------------------------------------------------------+
+| limit  | integer | The maximum number of secrets to return (up to 100).       |
+|        |         | The default limit is 10.                                   |
++--------+---------+------------------------------------------------------------+
+
+This operation does not take a request body.
 
 
-
-This operation does not accept a request body.
-
-
-**Example Get Secrets: JSON request**
+**Example Delete Secret: JSON request**
 
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Project-Id: 12345' \
-   https://endpointURL/v1/secrets
+   curl -H 'Accept: application/json' -H 'X-Auth-Token: {authToken}' \
+   https://{endpoint}/v1/secrets?offset={offset}&limit={limit}
 
 
+where:
 
-
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {offset} is the offset into the list of secrets where the returned list will start
+- {limit} is the max number of secrets to return in the list
 
 Response
 """"""""""""""""
+
+
+This table shows the response parameters for the request:
+
++------------+---------+--------------------------------------------------------+
+| Name       | Type    | Description                                            |
++============+=========+========================================================+
+| secrets    | list    | Contains a list of dictionaries filled with secret     |
+|            |         | data                                                   |
++------------+---------+--------------------------------------------------------+
+| total      | integer | The total number of secrets available to the user      |
++------------+---------+--------------------------------------------------------+
+| next       | string  | A HATEOAS url to retrieve the next set of secrets      |
+|            |         | based on the offset and limit parameters. This         |
+|            |         | attribute is only available when the total number of   |
+|            |         | secrets is greater than offset and limit parameter     |
+|            |         | combined.                                              |
++------------+---------+--------------------------------------------------------+
+| previous   | string  | A HATEOAS url to retrieve the previous set of          |
+|            |         | secrets based on the offset and limit parameters.      |
+|            |         | This attribute is only available when the request      |
+|            |         | offset is greater than 0.                              |
++------------+---------+--------------------------------------------------------+
 
 
 **Example Get Secrets: JSON response**
@@ -73,7 +106,7 @@ Response
        "secrets": [
            {
                "status": "ACTIVE",
-               "secret_ref": "https://endpointURL/v1/secrets/15108db8-4505-4c5b-96b9-a9838951f28f",
+               "secret_ref": "https://{endpoint}/v1/secrets/15108db8-4505-4c5b-96b9-a9838951f28f",
                "updated": "2014-08-25T20:43:01.510569",
                "name": "secretname",
                "algorithm": "aes",
@@ -87,7 +120,7 @@ Response
            },
            {
                "status": "ACTIVE",
-               "secret_ref": "https://endpointURL/v1/secrets/f74a51d2-99a8-423a-8cea-2bf10b263584",
+               "secret_ref": "https://{endpoint}/v1/secrets/f74a51d2-99a8-423a-8cea-2bf10b263584",
                "updated": "2014-08-25T21:18:35.821340",
                "name": "secretname",
                "algorithm": "aes",
@@ -101,6 +134,6 @@ Response
            }
        ],
        "total": 4,
-       "next": "https://endpointURL/v1/secrets?limit=2&offset=3",
-       "previous": "https://endpointURL/v1/secrets?limit=2&offset=0"
+       "next": "https://{endpoint}/v1/secrets?limit=2&offset=3",
+       "previous": "https://{endpoint}/v1/secrets?limit=2&offset=0"
    }

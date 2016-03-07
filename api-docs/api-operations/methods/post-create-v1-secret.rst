@@ -6,17 +6,15 @@ Create Secret
 
 .. code::
 
-    POST /{version}/{tenantId}/secrets
+    POST /{version}/secrets
 
-This method stores a secret.
+This method creates and stores a secret.
 
-This method stores a secret.
-
-Note: The POST request creates and stores secret metadata. If the payload is provided with the POST request, it is encrypted and stored, and then linked with this metadata. If no payload is provided in the POST request, it must be provided in a subsequent PUT request. Using the secrets resource to store a secret differs from creating a secret by using the orders resource. When you make a POST requests using the orders resource, Barbican generates the actual secret information.
-
+..  note::
+    The POST request always creates and stores secret metadata. If a payload is provided with the POST request, it is encrypted and stored, and then linked with this metadata. If no payload is provided in the POST request, it must be provided in a subsequent PUT request.
 
 
-This table shows the possible response codes for this operation:
+This table shows possible response codes for this operation:
 
 
 +--------------------------+-------------------------+-------------------------+
@@ -65,23 +63,6 @@ This table shows the possible response codes for this operation:
 
 Request
 """"""""""""""""
-
-
-
-
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Barbican service     |
-+--------------------------+-------------------------+-------------------------+
-
-
-
 
 
 This table shows the body parameters for the request:
@@ -241,7 +222,8 @@ This table shows the body parameters for the request:
 
 .. code::
 
-   curl https://endpointURL/v1/secrets -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-Project-Id: 12345' -d \
+   curl -X POST https://{endpoint}/v1/secrets -H 'Content-Type: application/json'\
+   -H 'Accept: application/json -H 'X-Auth-Token: {authToken}' -d \
    '{
      "name": "key",
      "expiration": "2014-09-01T19:14:44.180394",
@@ -252,6 +234,10 @@ This table shows the body parameters for the request:
      "payload_content_type": "text/plain"
      }'
 
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
 
 Response
 """"""""""""""""
@@ -262,5 +248,8 @@ Response
 .. code::
 
    {
-       "secret_ref": "https://endpointURL/v1/secrets/94dc45d8-5232-4be7-8263-9ceeda7410a0"
+       "secret_ref": "https://{endpoint}/v1/secrets/94dc45d8-5232-4be7-8263-9ceeda7410a0"
    }
+
+The secret ID is the UUID returned as the last part of the URL.  For this example, 
+the secret ID is 94dc45d8-5232-4be7-8263-9ceeda7410a0.

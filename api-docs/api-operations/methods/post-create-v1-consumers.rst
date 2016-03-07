@@ -6,24 +6,22 @@ Create a consumer
 
 .. code::
 
-  POST {container_ref}/consumers
+    POST /{version}/containers/{container_id}/consumers
 
 
-Creates a consumer.
+Creates a consumer for the specified container.
 
 This table shows the possible response codes for this operation:
 
 +------+-----------------------------------------------------------------------------+
 | Code | Description                                                                 |
 +======+=============================================================================+
-| 200  | OK                                                                          |
-+------+-----------------------------------------------------------------------------+
-| 400  | Bad Request                                                                 |
+| 201  | Successful creation of the consumer                                         |
 +------+-----------------------------------------------------------------------------+
 | 401  | Invalid X-Auth-Token or the token doesn't have permissions to this resource |
 +------+-----------------------------------------------------------------------------+
 | 403  | Forbidden.  The user has been authenticated, but is not authorized to       |
-|      | create a consumer. This can be based on the the user's role or the          |
+|      | create a consumer.  This can be based on the the user's role or the         |
 |      | project's quota.                                                            |
 +------+-----------------------------------------------------------------------------+
 
@@ -32,7 +30,12 @@ Request
 """"""""""""""""
 
 
-The following table shows the URI parameters for the request:
+
+There are no URL parameters for this request.
+
+
+This table shows the body parameters for the request:
+
 
 
 +----------------------------+---------+----------------------------------------------+------------+
@@ -50,15 +53,19 @@ The following table shows the URI parameters for the request:
 
 .. code::
 
-      POST {container_ref}/consumers
-      Headers:
-      X-Project-Id: {project_id}
+      curl -X POST -H 'X-Auth-Token {authToken} -H 'Content-Type: application/json' \
+        -d '{
+            "name": "your consumer name",
+            "url": "{consumerURL}"
+        }' https://{endpoint}/v1/containers/{containerID}/consumers
 
-      Content:
-      {
-        "name": "ConsumerName",
-        "url": "ConsumerURL"
-      }
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {containerID} is the UUID for the container
+- {consumerURL} is the URL for the consumer
+
 
 Response
 """"""""""""""""
@@ -68,26 +75,13 @@ Response
 
 .. code::
 
-    200 OK
-
     {
         "status": "ACTIVE",
         "updated": "2015-10-15T17:56:18.626724",
-        "name": "container name",
+        "name": "your container name",
         "consumers": [
             {
-                "URL": "consumerURL",
-                "name": "consumername"
+                "URL": "{consumerURL}",
+                "name": "your consumer name"
             }
-    ],
-      "created": "2015-10-15T17:55:44.380002",
-      "container_ref": "http://localhost:9311/v1/containers/74bbd3fd-9ba8-42ee-b87e-2eecf10e47b9",
-      "creator_id": "b17c815d80f946ea8505c34347a2aeba",
-      "secret_refs": [
-          {
-            "secret_ref": "http://localhost:9311/v1/secrets/b61613fc-be53-4696-ac01-c3a789e87973",
-            "name": "private_key"
-          }
-    ],
-      "type": "generic"
     }
