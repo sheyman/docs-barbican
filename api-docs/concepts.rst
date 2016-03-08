@@ -12,12 +12,10 @@ enables secure life-cycle management for keys and credentials.
 Secrets
 ~~~~~~~~~~~~~~~~~~
 
-A secret can be any data that requires security conscious storage. This
-may be reflected as a key, credential, config file, etc.
-
-A secret is a singular item that is stored within |product name|. A secret is
-anything you want it to be; however, the formal use case is a key that you wish
-to store away from prying eyes.
+A secret is a singular item that is stored within |product name|. It is
+any data that requires security conscious storage such as a key,
+credential, configuration file, etc.  The typical use case for a secret
+is an encryption key that you wish to store away from prying eyes.
 
 Some examples of a secret may include:
   * Private Key
