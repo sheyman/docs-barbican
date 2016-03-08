@@ -24,11 +24,9 @@ Some examples of a secret may include:
   * SSH Keys
 
 The secret schema represents the actual secret or key that is presented
-to the |product name| service. Currently secrets can be in any format, but
-additional functionality may become available in the future for known
-types of symmetric or asymmetric keys, like SSL certificates.
+to the |product name| service.
 
-The following shows an example of a secret:
+The following shows an example of a secret that has been added to |product name|:
 
 .. code::
 
