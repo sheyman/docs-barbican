@@ -101,7 +101,7 @@ Instead, find the endpoint for your service and region in your service catalog a
 .. note::
    If you authenticated with username and password credentials, and the
    Identity service returns a 401 message requesting additional credentials,
-   your account could be configured for multi-factor authentication.
+   your account might be configured for multi-factor authentication.
 
    To complete the authentication process, submit a second POST tokens
    request with multi-factor authentication credentials.

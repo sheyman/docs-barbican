@@ -24,9 +24,9 @@ Some examples of a secret may include:
   * SSH Keys
 
 The secret schema represents the actual secret or key that is presented
-to the |product name| service.
+to the |product name| service.  Secrets themselves can be any format.
 
-The following shows an example of a secret that has been added to |product name|:
+The following example shows the specification for a secret that has been added to |product name|:
 
 .. code::
 
@@ -54,7 +54,18 @@ A secret consists of the following elements:
 +--------------+---------------------------------------------------------------+
 | secret       | The base64-encoded value of the secret.                       |
 +--------------+---------------------------------------------------------------+
-| secret\_type | An indication of the type of the file presenting the secret.  |
+| secret\_type | (optional) The secret type. The possible secret types are:    |
+|              |                                                               |
+|              |         - symmetric: Used for storing byte arrays such as     |
+|              |           keys suitable for symmetric encryption.             |
+|              |         - public: Used for storing the public key of an       |
+|              |           asymmetric keypair.                                 |
+|              |         - private: Used for storing the private key of an     |
+|              |           asymmetric keypair.                                 |
+|              |         - passphrase: Used for storing plain text             |
+|              |           passphrases.                                        |
+|              |         - certificate: Used for storing cryptographic         |
+|              |           certificates such as X.509 certificates.            |
 |              |                                                               |
 +--------------+---------------------------------------------------------------+
 
@@ -85,12 +96,12 @@ You can use one of the following methods to store a secret:
 Container
 ~~~~~~~~~~~~~~~~~~
 
-A container is a way to logically group secrets that may be of a similar
-type; for example, grouping a private key, certificate, and bundle for
-an SSL certificate in a single container.
-The containers resource is the organizational center piece of |product name|. It
-creates a logical object that can be used to hold secret references. This is helpful
-when having to deal with tracking large numbers of secrets.
+The containers resource is the organizational center piece of |product name| that simplifies secrets management
+in environments that have large numbers of secrets.
+
+A container is a logical object that can be used to store secret references that are related by relationship or type. 
+For example you can create a single container to group a private key, certificate, and bundle for
+an SSL certificate. Containers simplify the task of managing large numbers of secrets resources.
 
 |product name| supports 3 types of containers:
   * :ref:`Generic <generic_containers>`
@@ -100,7 +111,7 @@ when having to deal with tracking large numbers of secrets.
 Each of these types have explicit restrictions as to what type of secrets should be
 held within. These will be broken down in their respective sections.
 
-This guide will assume you will be using a local running development environment of |product name|.
+This guide assumes that you are running |product name| in a local development environment.
 
 
 .. _generic_containers:
@@ -234,14 +245,19 @@ that apply to their project. |product name| can derive the project that a user b
 to by reading the project scope from the authentication token.
 
 Service administrators can read, set, and delete quota configurations for each
-project known to |product name|.  The service administrator is recognized by its authenticated
-role.  The service administrator's role is defined in |product name|'s policy.json file.
-The default role for a service admin is "key-manager:service-admin".
+project known to |product name|.  These operations are available to an authenticated user
+that has the service administrator role. This role is defined in the |product name| policy.json configuration file.
+
+The name for a service administrator role is "keep:service-admin".
 
 Quotas can be enforced for the following |product name| resources: secrets, containers,
-and consumers.  The configured quota value can be None (use the default),
--1 (unlimited), 0 (disabled), or a positive integer defining the maximum number
-allowed for a project.
+and consumers.  The configured quota value can be 
+
+- -1 meaning no limit to the number of resources you can create
+- 0 meaning this resource has been disabled
+- positive integer defining the maximum number allowed for a project
+  
+If no value is specified, |product name| uses the default setting, and the quota value is set to None.
 
 .. _default_project_quotas:
 

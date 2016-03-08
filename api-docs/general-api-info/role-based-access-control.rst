@@ -65,5 +65,5 @@ observer
     not allowed to upload new secrets or delete existing secrets.
 
 audit
-    Users with this role are only allowed access to the resource metadata.
+    Users with this role are allowed access only to the resource metadata
     Users with this role are unable to decrypt secrets.
