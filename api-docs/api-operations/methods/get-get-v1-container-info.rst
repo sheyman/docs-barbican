@@ -76,13 +76,20 @@ Response
         "status": "ACTIVE",
         "name": "container name",
         "consumers": [],
-        "container_ref": "https://{endpoint}/v1/containers/{container_id}",
+        "container_ref": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b",
         "secret_refs": [
           {
               "name": "private_key",
-              "secret_ref": "https://{endpoint}/v1/secrets/{secretID}"
+              "secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/485950f0-37a5-4ba4-b1d6-413f79b849ef"
           }
         ],
         "created": "2015-03-26T21:10:45.417835",
         "updated": "2015-03-26T21:10:45.417835"
     }
+
+
+where:
+
+- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
+- the secret ID is 485950f0-37a5-4ba4-b1d6-413f79b849ef
+- the endpoint is iad.keep.api.rackspacecloud.com

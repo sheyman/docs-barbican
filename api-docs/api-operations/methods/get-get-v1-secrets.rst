@@ -106,7 +106,7 @@ This table shows the response parameters for the request:
        "secrets": [
            {
                "status": "ACTIVE",
-               "secret_ref": "https://{endpoint}/v1/secrets/15108db8-4505-4c5b-96b9-a9838951f28f",
+               "secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/15108db8-4505-4c5b-96b9-a9838951f28f",
                "updated": "2014-08-25T20:43:01.510569",
                "name": "secretname",
                "algorithm": "aes",
@@ -120,7 +120,7 @@ This table shows the response parameters for the request:
            },
            {
                "status": "ACTIVE",
-               "secret_ref": "https://{endpoint}/v1/secrets/f74a51d2-99a8-423a-8cea-2bf10b263584",
+               "secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/485950f0-37a5-4ba4-b1d6-413f79b849ef",
                "updated": "2014-08-25T21:18:35.821340",
                "name": "secretname",
                "algorithm": "aes",
@@ -133,7 +133,13 @@ This table shows the response parameters for the request:
                "expiration": null
            }
        ],
-       "total": 4,
-       "next": "https://{endpoint}/v1/secrets?limit=2&offset=3",
-       "previous": "https://{endpoint}/v1/secrets?limit=2&offset=0"
+       "total": 2,
+       "next": "https://iad.keep.api.rackspacecloud.com/v1/secrets?limit=2&offset=3",
+       "previous": "https://iad.keep.api.rackspacecloud.com/v1/secrets?limit=2&offset=0"
    }
+
+where:
+
+- the initial request specified a limit of 2 and offset of 0
+- the secret IDs are 15108db8-4505-4c5b-96b9-a9838951f28f and 485950f0-37a5-4ba4-b1d6-413f79b849ef
+- the endpoint is iad.keep.api.rackspacecloud.com

@@ -106,8 +106,10 @@ Response
 .. code::
 
    {
-       "container_ref": "https://{endpoint}/v1/containers/39dc45d8-4932-9ce7-8263-d9beda7410a0"
+       "container_ref": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b"
    }
 
-The container ID is the UUID returned as the last part of the URL.  For this example, 
-the container ID is 39dc45d8-4932-9ce7-8263-d9beda7410a0.
+where:
+
+- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
+- the endpoint is iad.keep.api.rackspacecloud.com

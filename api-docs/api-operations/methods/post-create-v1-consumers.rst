@@ -81,7 +81,11 @@ Response
         "name": "your container name",
         "consumers": [
             {
-                "URL": "{consumerURL}",
+                "URL": "https://consum.er",
                 "name": "your consumer name"
             }
     }
+
+where:
+
+- the consumer URL is https://consum.er

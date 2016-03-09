@@ -107,13 +107,13 @@ This table shows the response parameters for the request:
         "containers": [
             {
                 "consumers": [],
-                "container_ref": "https://{barbican_host}/v1/containers/{uuid}",
+                "container_ref": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b",
                 "created": "2015-03-26T21:10:45.417835",
                 "name": "container name",
                 "secret_refs": [
                     {
                         "name": "private_key",
-                        "secret_ref": "https://{barbican_host}/v1/secrets/{uuid}"
+                        "secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/485950f0-37a5-4ba4-b1d6-413f79b849ef"
                     }
                 ],
                 "status": "ACTIVE",
@@ -123,3 +123,9 @@ This table shows the response parameters for the request:
         ],
         "total": 1
       }
+
+where:
+
+- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
+- the secret ID is 485950f0-37a5-4ba4-b1d6-413f79b849ef
+- the endpoint is iad.keep.api.rackspacecloud.com

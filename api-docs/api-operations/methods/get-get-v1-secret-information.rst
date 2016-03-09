@@ -61,7 +61,7 @@ Response
 
    {
        "status": "ACTIVE",
-       "secret_ref": "https://{endpoint}/v1/secrets/888b29a4-c7cf-49d0-bfdf-bd9e6f26d718",
+       "secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/485950f0-37a5-4ba4-b1d6-413f79b849ef",
        "updated": "2014-05-02T06:29:25.415271",
        "name": "AES key",
        "algorithm": "aes",
@@ -73,3 +73,9 @@ Response
        "bit_length": 256,
        "expiration": "2014-05-28T19:14:44.180394"
    }
+
+
+where:
+
+- the secret ID is 485950f0-37a5-4ba4-b1d6-413f79b849ef
+- the endpoint is iad.keep.api.rackspacecloud.com

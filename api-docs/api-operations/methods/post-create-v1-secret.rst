@@ -248,8 +248,10 @@ Response
 .. code::
 
    {
-       "secret_ref": "https://{endpoint}/v1/secrets/94dc45d8-5232-4be7-8263-9ceeda7410a0"
+       "secret_ref": "https://iad.keep.api.rackspacecloud.com/v1/secrets/485950f0-37a5-4ba4-b1d6-413f79b849ef"
    }
 
-The secret ID is the UUID returned as the last part of the URL.  For this example, 
-the secret ID is 94dc45d8-5232-4be7-8263-9ceeda7410a0.
+where:
+
+- the secret ID is 485950f0-37a5-4ba4-b1d6-413f79b849ef
+- the endpoint is iad.keep.api.rackspacecloud.com

@@ -131,7 +131,7 @@ The following table shows the response parameters for this request.
 
      {
          "total": 3,
-         "next": "https://{endpoint}/v1/containers/{containerID}/consumers?limit=1&offset=2",
+         "next": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b/consumers?limit=1&offset=2",
          "consumers": [
             {
                 "status": "ACTIVE",
@@ -141,5 +141,10 @@ The following table shows the response parameters for this request.
                 "created": "2015-10-15T21:17:08.092408"
             }
         ],
-        "previous": "https://{endpoint}/v1/containers/{containerID}/consumers?limit=1&offset=0"
+        "previous": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b/consumers?limit=1&offset=0"
      }
+
+where:
+
+- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
+- the endpoint is iad.keep.api.rackspacecloud.com
