@@ -26,22 +26,23 @@ Deletes the specified consumer for the specified container.
 Request
 """"""""""""""""
 
-This operation does not accept a request body.
+The following table shows the URI parameters for the request:
+
++----------------------------+---------+----------------------------------------------+------------+
+| Parameter name             | Type    | Description                                  | Default    |
++============================+=========+==============================================+============+
+|containerID                 | string  | The UUID for the container                   | None       |
++----------------------------+---------+----------------------------------------------+------------+
+|consumerID                  | string  | The UUID for the consumer                    | None       |
++----------------------------+---------+----------------------------------------------+------------+
 
 **Example Delete consumer: JSON request**
 
-
 .. code::
 
-   curl -X DELETE -H 'X-Auth-Token: {authToken}' \
-        https://{endpoint}/v1/containers/{containerID}/consumers/{consumerID}
+   curl -X DELETE -H 'X-Auth-Token: $AUTH-TOKEN' \
+        $ENDPOINT/v1/containers/{containerID}/consumers/{consumerID}
 
-where
-
-- {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
-- {containerID} is the UUID for the container
-- {consumerID} is the UUID for the consumer to be deleted from the container
 
 Response
 """"""""""""""""
