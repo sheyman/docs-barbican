@@ -6,9 +6,12 @@ Get Project quota details
 
 .. code::
 
-    GET /v1/project-quotas/{uuid}
+    GET /{version}/project-quotas/{project_id}
 
-Retrieves a project's configured project quota information.
+Retrieves the specified project's configured project quota information.  This is different
+from the GET /{version}/quotas API call which returns the resolved quotas.  This call only
+returns the values set for quotas at the project level.  Quotas are resolved by taking the
+system level of quotas and overriding any project-level quotas.
 
 This table shows the possible response codes for this operation:
 
@@ -26,18 +29,12 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Cloud Keep service.  |
-+--------------------------+-------------------------+-------------------------+
-|{project_uuid}            |String                   |This parameter specifies |
+|{project_id}              |String                   |This parameter specifies |
 |                          |                         |the unique identifier of |
 |                          |                         |a project.               |
 +--------------------------+-------------------------+-------------------------+
@@ -51,8 +48,14 @@ This operation does not accept a request body.
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Auth-Token:<token>'\
-   https://endpointURL/v1/project-quotas/{uuid}
+   curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
+   https://{endpoint}/v1/project-quotas/{projectID}
+
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {projectID} is the id of the project
 
 
 Response
@@ -66,10 +69,9 @@ The following table shows the response attributes for this request.
 | project-quotas | dict    | Contains a dictionary with project quota information.        |
 +----------------+---------+--------------------------------------------------------------+
 | secrets        | integer | Contains the configured quota value of the requested project |
-|                |         | for the secret resource.                                     |
+|                |         | for the secrets resource.                                    |
 +----------------+---------+--------------------------------------------------------------+
-| orders         | integer | Contains the configured quota value of the requested project |
-|                |         | for the orders resource.                                     |
+| orders         | integer | Reserved for future use.                                     |
 +----------------+---------+--------------------------------------------------------------+
 | containers     | integer | Contains the configured quota value of the requested project |
 |                |         | for the containers resource.                                 |
@@ -77,8 +79,7 @@ The following table shows the response attributes for this request.
 | consumers      | integer | Contains the configured quota value of the requested project |
 |                |         | for the consumers resource.                                  |
 +----------------+---------+--------------------------------------------------------------+
-| cas            | integer | Contains the configured quota value of the requested project |
-|                |         | for the CAs resource.                                        |
+| cas            | integer |  Reserved for future use.                                    |
 +----------------+---------+--------------------------------------------------------------+
 
 
@@ -87,16 +88,12 @@ The following table shows the response attributes for this request.
 
 .. code::
 
-        200 OK
-
-        Content-Type: application/json
-
         {
             "project_quotas": {
-            "secrets": 10,
-            "orders": 20,
-            "containers": -1,
-            "consumers": 10,
-            "cas": 5
-            }
+                "secrets": 10,
+                "orders": 0,
+                "containers": -1,
+                "consumers": 10,
+                "cas": 0
+                }
         }

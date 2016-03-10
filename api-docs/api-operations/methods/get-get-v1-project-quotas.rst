@@ -6,7 +6,7 @@ Get project quotas
 
 .. code::
 
-    GET /{version}/{tenantId}/quotas
+    GET /{version}/quotas
 
 Get the effective quotas for the project of the requester. The project id
 of the requester is derived from the authentication token provided in the
@@ -29,16 +29,7 @@ Request
 """"""""""""""""
 
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Cloud Keep service.  |
-+--------------------------+-------------------------+-------------------------+
+There are no URL parameters for this request.
 
 
 This operation does not accept a request body.
@@ -49,8 +40,13 @@ This operation does not accept a request body.
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Auth-Token:<token>'\
-   https://endpointURL/v1/quotas
+   curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
+   https://{endpoint}/v1/quotas
+
+where
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
 
 
 Response
@@ -66,8 +62,7 @@ This table shows the response attributes for this request.
 | secrets    | integer | Contains the effective quota value of the current project    |
 |            |         | for the secret resource.                                     |
 +------------+---------+--------------------------------------------------------------+
-| orders     | integer | Contains the effective quota value of the current project    |
-|            |         | for the orders resource.                                     |
+| orders     | integer | Reserved for future use.                                     |
 +------------+---------+--------------------------------------------------------------+
 | containers | integer | Contains the effective quota value of the current project    |
 |            |         | for the containers resource.                                 |
@@ -75,8 +70,7 @@ This table shows the response attributes for this request.
 | consumers  | integer | Contains the effective quota value of the current project    |
 |            |         | for the consumers resource.                                  |
 +------------+---------+--------------------------------------------------------------+
-| cas        | integer | Contains the effective quota value of the current project    |
-|            |         | for the CAs resource.                                        |
+| cas        | integer | Reserved for future use.                                     |
 +------------+---------+--------------------------------------------------------------+
 
 Effective quota values are interpreted as follows:
@@ -97,15 +91,12 @@ Effective quota values are interpreted as follows:
 
 .. code::
 
-      HTTP/1.1 200 OK
-      Content-Type: application/json
-
-      {
-          "quotas": {
-            "secrets": 10,
-            "orders": 20,
-            "containers": 10,
-            "consumers": -1,
-            "cas": 5
-         }
-       }
+    {
+      "quotas": {
+        "secrets": 1000,
+        "cas": 0,
+        "orders": 0,
+        "containers": 1000,
+        "consumers": 1000
+      }
+    }

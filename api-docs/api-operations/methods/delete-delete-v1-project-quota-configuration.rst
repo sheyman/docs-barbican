@@ -6,9 +6,9 @@ Delete the project quotas configuration
 
 .. code::
 
-    DELETE /v1/project-quotas/{uuid}
+    DELETE /v1/project-quotas/{project_id}
 
-Delete the project quotas configuration for the project with the requested UUID. When
+Delete the project quotas configuration for the project with the specified project_id. When
 the project quota configuration is deleted, then the default quotas will be used for
 the specified project.
 
@@ -37,9 +37,14 @@ This operation does not accept a request body.
 
 .. code::
 
-      DELETE v1/project-quotas/{uuid}
-      Headers:
-      X-Auth-Token:<token>
+      curl -X DELETE -H 'X-Auth-Token: {authToken}' \
+        https://{endpoint}/v1/project-quotas/{projectID}
+
+where:
+ 
+ - {endpoint} is the endpoint for the service
+ - {authToken} is the authentication token returned by the identity service
+ - {projectID} is the ID for the project whose project-level quotas are to be deleted.
 
 
 Response

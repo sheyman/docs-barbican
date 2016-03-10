@@ -6,10 +6,10 @@ Update configured project quotas
 
 .. code::
 
-    GET /{version}/{tenantId}/project-quotas/{uuid}
+    PUT /{version}/project-quotas/{project_id}
 
 
-Create or update the configured project quotas for the project with the specified UUID.
+Create or update the configured project quotas for the project with the specified project ID.
 
 
 
@@ -36,13 +36,8 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Cloud Keep service.  |
-+--------------------------+-------------------------+-------------------------+
-|{uuid}                    |String *(Required)*      |This parameter specifies |
-|                          |                         |the UUID for the         |
+|{project_id}              |String *(Required)*      |This parameter specifies |
+|                          |                         |the ID for the           |
 |                          |                         |specified project.       |
 +--------------------------+-------------------------+-------------------------+
 
@@ -59,8 +54,7 @@ Request Attributes
 | secrets        | integer | The value to set for this project's secret   |
 |                |         | quota.                                       |
 +----------------+---------+----------------------------------------------+
-| orders         | integer | The value to set for this project's order    |
-|                |         | quota.                                       |
+| orders         | integer | Reserved for future use.                     |
 +----------------+---------+----------------------------------------------+
 | containers     | integer | The value to set for this project's          |
 |                |         | container quota.                             |
@@ -68,9 +62,20 @@ Request Attributes
 | consumers      | integer | The value to set for this project's          |
 |                |         | consumer quota.                              |
 +----------------+---------+----------------------------------------------+
-| cas            | integer | The value to set for this project's          |
-|                |         | CA quota.                                    |
+| cas            | integer | Reserved for future use.                     |
 +----------------+---------+----------------------------------------------+
+
+You only need to specify the values that you want to override.  For example, if
+you are only interested in changing the ``secrets`` quota then your project-quotas
+dict should only contain an entry for ``secrets``:
+
+.. code::
+
+    {
+        "project_quotas": {
+                "secrets": 200,
+            }
+    }
 
 Configured project quota values are specified as follows:
 
@@ -93,7 +98,7 @@ Configured project quota values are specified as follows:
 
 .. code::
 
-      curl -s https://endpointURL/v1/12345/project-quotas/{uuid} \
+      curl -s https://{endpoint}/v1/project-quotas/{projectID} \
       -X PUT \
       -d '{
             "project_quotas": {
@@ -103,8 +108,16 @@ Configured project quota values are specified as follows:
             }
           }
           ' \
-          -H 'X-Auth-Token: your_auth_token' \
+          -H 'X-Auth-Token: {authToken}' \
           -H 'Content-Type: application/json'
+
+
+where
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {projectID} is the project ID whose project-level quotas are to be modified
+
 
 
 Response

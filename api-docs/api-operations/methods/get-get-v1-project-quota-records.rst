@@ -6,7 +6,7 @@ Get Project quota records
 
 .. code::
 
-  GET /v1/project-quotas
+  GET /{version}/project-quotas
 
 Gets a list of configured project quota records.  Paging is supported using the
 optional parameters offset and limit.
@@ -27,16 +27,7 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-This table shows the URI parameters for the request:
-
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{tenantId}                |String *(Required)*      |This parameter specifies |
-|                          |                         |the tenant ID of the     |
-|                          |                         |client subscribing to    |
-|                          |                         |the Cloud Keep service.  |
-+--------------------------+-------------------------+-------------------------+
+There are no URL parameters for this operation.
 
 
 This table shows the body parameters for the request:
@@ -57,8 +48,15 @@ This table shows the body parameters for the request:
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Auth-Token:<token>'\
-   https://endpointURL/v1/project-quotas
+   curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
+      https://{endpoint}/v1/project-quotas/?offset={offset}&limit={limit}
+
+where:
+
+- {endpoint} is the endpoint for the service
+- {authToken} is the authentication token returned by the identity service
+- {offset} is the offset into the list of project quotas
+- {limit} is the maximum number of project quotas to return
 
 
 Response
@@ -77,8 +75,7 @@ This table shows the response parameters for the request.
 | secrets        | integer | Contains the effective quota value of the current project    |
 |                |         | for the secret resource.                                     |
 +----------------+---------+--------------------------------------------------------------+
-| orders         | integer | Contains the effective quota value of the current project    |
-|                |         | for the orders resource.                                     |
+| orders         | integer | Reserved for future use.                                     |
 +----------------+---------+--------------------------------------------------------------+
 | containers     | integer | Contains the effective quota value of the current project    |
 |                |         | for the containers resource.                                 |
@@ -86,8 +83,7 @@ This table shows the response parameters for the request.
 | consumers      | integer | Contains the effective quota value of the current project    |
 |                |         | for the consumers resource.                                  |
 +----------------+---------+--------------------------------------------------------------+
-| cas            | integer | Contains the effective quota value of the current project    |
-|                |         | for the CAs resource.                                        |
+| cas            | integer | Reserved for future use.                                     |
 +----------------+---------+--------------------------------------------------------------+
 | total          | integer | The total number of configured project quotas records.       |
 +----------------+---------+--------------------------------------------------------------+
@@ -124,32 +120,28 @@ Configured project quota values are interpreted as follows:
 
 .. code::
 
-      200 OK
-
-      Content-Type: application/json
-
       {
         "project_quotas": [
           {
-              "project_id": "1234",
+              "project_id": "123123",
               "project_quotas": {
                   "secrets": 2000,
                   "orders": 0,
                   "containers": -1,
-                  "consumers": null,
-                  "cas": null
+                  "consumers": 1000,
+                  "cas": 0
             }
           },
           {
-              "project_id": "5678",
+              "project_id": "789789",
               "project_quotas": {
                   "secrets": 200,
-                  "orders": 100,
+                  "orders": 0,
                   "containers": -1,
-                  "consumers": null,
-                  "cas": null
+                  "consumers": 1000,
+                  "cas": 0
             }
           },
         ],
-        "total" : 30,
+        "total" : 2,
       }
