@@ -222,8 +222,8 @@ This table shows the body parameters for the request:
 
 .. code::
 
-   curl -X POST https://{endpoint}/v1/secrets -H 'Content-Type: application/json'\
-   -H 'Accept: application/json -H 'X-Auth-Token: {authToken}' -d \
+   curl -X POST $ENDPOINT/v1/secrets -H 'Content-Type: application/json'\
+   -H 'Accept: application/json -H 'X-Auth-Token: $AUTH-TOKEN' -d \
    '{
      "name": "key",
      "expiration": "2014-09-01T19:14:44.180394",
@@ -237,7 +237,7 @@ This table shows the body parameters for the request:
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 
 Response
 """"""""""""""""

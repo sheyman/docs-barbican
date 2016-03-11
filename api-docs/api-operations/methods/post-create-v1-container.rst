@@ -75,22 +75,22 @@ This table shows the body parameters for the request:
 
 .. code::
 
-      curl -X POST -H 'X-Auth-Token {authToken} -d \
+      curl -X POST -H 'X-Auth-Token $AUTH-TOKEN -d \
         '{
             "type": "generic",
             "name": "container name",
             "secret_refs": [
                 {
                     "name": "private_key",
-                    "secret_ref": "https://{endpoint}/v1/secrets/{secretID}"
+                    "secret_ref": "$ENDPOINT/v1/secrets/{secretID}"
                 }
             ]
-        }' https://{endpoint}/v1/containers
+        }' $ENDPOINT/v1/containers
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {secretID} is the UUID for the secret to be added in the container.
 
 

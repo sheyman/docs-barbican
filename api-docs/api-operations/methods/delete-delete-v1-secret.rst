@@ -36,13 +36,13 @@ This operation doesn't take a request body.
 
 .. code::
 
-   curl -X DELETE -H 'X-Auth-Token: {authToken}' \
-        https://{endpoint}/v1/secrets/{secretID}
+   curl -X DELETE -H 'X-Auth-Token: $AUTH-TOKEN' \
+        $ENDPOINT/v1/secrets/{secretID}
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {secretID} is the UUID for the secret to be deleted.
 
 Response

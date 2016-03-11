@@ -86,13 +86,13 @@ This operation does not accept a request body.
 
 .. code::
 
-   curl -X PUT -H 'Content-Type: application/octet-stream' -H 'X-Auth-Token: {authToken}' \
-        -T {secretDataFile} https://{endpoint}/v1/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
+   curl -X PUT -H 'Content-Type: application/octet-stream' -H 'X-Auth-Token: $AUTH-TOKEN' \
+        -T {secretDataFile} $ENDPOINT/v1/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {secretDataFile} is a file containing the binary data to be stored as the secret payload.
 
 ..  note::

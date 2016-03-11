@@ -59,13 +59,13 @@ The following table shows the URI parameters for the request:
 
 .. code::
 
-    curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
-    https://{endpoint}/v1/containers/{containerID}/consumers/?offset={offset}&limit={limit}
+    curl -H 'Accept: application/json' -H 'X-Auth-Token:$AUTH-TOKEN'\
+    $ENDPOINT/v1/containers/{containerID}/consumers/?offset={offset}&limit={limit}
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {containerID} is a the UUID for the container
 - {offset} is the offset into the list of consumers where the returned list will start
 - {limit} is the max number of consumers to return in the list

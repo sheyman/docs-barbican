@@ -51,14 +51,14 @@ This operation does not accept a request body.
 
 .. code::
 
-      curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}' \
-         https://{endpoint}/v1/containers/{containerID}
+      curl -H 'Accept: application/json' -H 'X-Auth-Token:$AUTH-TOKEN' \
+         $ENDPOINT/v1/containers/{containerID}
 
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {containerID} is the ID of the container for which we want the information
 
 

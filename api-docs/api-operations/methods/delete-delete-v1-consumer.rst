@@ -28,13 +28,15 @@ Request
 
 The following table shows the URI parameters for the request:
 
-+----------------------------+---------+----------------------------------------------+------------+
-| Parameter name             | Type    | Description                                  | Default    |
-+============================+=========+==============================================+============+
-|containerID                 | string  | The UUID for the container                   | None       |
-+----------------------------+---------+----------------------------------------------+------------+
-|consumerID                  | string  | The UUID for the consumer                    | None       |
-+----------------------------+---------+----------------------------------------------+------------+
++----------------------------+---------+---------------------------------+------------+
+| Parameter name             | Type    | Description                     | Default    |
++============================+=========+=================================+============+
+|containerID                 | string  | The UUID for the container      | None       |
++----------------------------+---------+---------------------------------+------------+
+|consumerID                  | string  | The UUID for the consumer       | None       |
++----------------------------+---------+---------------------------------+------------+
+
+This operation does not require a response body.
 
 **Example Delete consumer: JSON request**
 
@@ -47,4 +49,5 @@ The following table shows the URI parameters for the request:
 Response
 """"""""""""""""
 
-This operation will return an HTTP 204 for a successful delete.  It does not return a response body.
+The operation returns an HTTP 204 Accepted response code, if successful. 
+It does not return a response body.

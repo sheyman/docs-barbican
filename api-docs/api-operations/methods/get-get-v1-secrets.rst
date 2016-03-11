@@ -59,14 +59,14 @@ This operation does not take a request body.
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Auth-Token: {authToken}' \
-   https://{endpoint}/v1/secrets?offset={offset}&limit={limit}
+   curl -H 'Accept: application/json' -H 'X-Auth-Token: $AUTH-TOKEN' \
+   $ENDPOINT/v1/secrets?offset={offset}&limit={limit}
 
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {offset} is the offset into the list of secrets where the returned list will start
 - {limit} is the max number of secrets to return in the list
 

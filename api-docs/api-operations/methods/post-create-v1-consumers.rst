@@ -53,16 +53,16 @@ This table shows the body parameters for the request:
 
 .. code::
 
-      curl -X POST -H 'X-Auth-Token {authToken} -H 'Content-Type: application/json' \
+      curl -X POST -H 'X-Auth-Token $AUTH-TOKEN -H 'Content-Type: application/json' \
         -d '{
             "name": "your consumer name",
             "url": "{consumerURL}"
-        }' https://{endpoint}/v1/containers/{containerID}/consumers
+        }' $ENDPOINT/v1/containers/{containerID}/consumers
 
 where:
 
 - {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
+- $AUTH-TOKEN is the authentication token returned by the identity service
 - {containerID} is the UUID for the container
 - {consumerURL} is the URL for the consumer
 
