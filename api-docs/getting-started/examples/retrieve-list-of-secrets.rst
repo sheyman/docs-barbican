@@ -3,21 +3,40 @@
 Retrieve a list of stored secrets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Perform a **GET** request on the secrets resource to retrieve a list of 
+:ref:`secrets <secrets-concept>` that are associated with your tenant.
 
-You can retrieve a list of secrets that are associated with your
-tenant by issing the following command:
+By default, the API request returns the first 11 secrets associated with the tenant. You 
+can use the *limit* and *offset* request parameters to limit the number of secrets 
+returned in a single request and to set the starting point for the list. 
+
+The following example specifies ``limit`` and ``offset`` values to return five secrets, starting 
+with the first. 
+
+
+**Example: Retrieve list of secrets request**
 
 .. code::
+    
+    $ curl -X GET $API_ENDPOINT/v1/secrets?limit=5\&offset=0 \
+         -H "Accept: application/json" \
+         -H "X-Auth-Token: $AUTH_TOKEN" \
+         -H "Content-Type: application/json" \
+         | python -m json.tool
 
-    curl -H 'X-Auth-Token: '$AUTH_TOKEN $API_ENDPOINT/v1/secrets?limit=5\&offset=0 | python -m json.tool
-
-..  note::
-
-      Using URL parameters, you can control the number of secrets to return (limit) as well as a starting point (offset).  If you omit these URL parameters, the defaults are limit=10 and offset=0.  The returned data will contain a "next" and/or "previous" field as you issue subsequent **GET** calls with different limits and offsets.  These fields can be used to help you nagivate through your entire list of secrets.
 
 
-If the call is successful, you receive a response like the following
-one:
+If the operation is successful, the response returns a list of secrets as shown in the 
+following example. 
+
+.. note:: 
+    
+    If additional secrets have been stored, the returned data contains 
+    ``next`` and ``previous`` links so that you can page through the data. 
+
+
+
+**Example:  Retrieve list of secrets response**
 
 .. code::
 
@@ -105,5 +124,7 @@ one:
             "updated": "2016-02-29T15:54:34.485707"
         }
     ],
-    "total": 23
+    "total": 23    
     }
+
+
