@@ -10,7 +10,7 @@ Delete a container
 
 Deletes a container.
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 +------+-----------------------------------------------------------------------------+
 | Code | Description                                                                 |
@@ -38,7 +38,7 @@ The following table shows the URI parameters for the request:
 This operation does not require a response body.
 
 
-**Example Delete container: JSON request**
+**Example: Delete container cURL request**
 
 
 .. code::

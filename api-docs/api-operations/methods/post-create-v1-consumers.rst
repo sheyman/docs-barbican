@@ -11,7 +11,7 @@ Create a consumer
 
 Creates a consumer for the specified container.
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 +------+-----------------------------------------------------------------------------+
 | Code | Description                                                                 |
@@ -30,47 +30,43 @@ Request
 """"""""""""""""
 
 
-
 There are no URL parameters for this request.
 
 
-This table shows the body parameters for the request:
+The following table shows the body parameters for the request:
+
++-------------------+---------+--------------------------------------------+------------+
+| Parameter name    | Type    | Description                                | Default    |
++===================+=========+============================================+============+
+|name               | string  | The name of the consumer set by the user.  | None       |
++-------------------+---------+--------------------------------------------+------------+
+|url                | string  | The url for the user or service using the  | None       |
+|                   |         | container.                                 |            |
++-------------------+---------+--------------------------------------------+------------+
+|containerID        | string  | The UUID for the container                 | None       |
++-------------------+---------+--------------------------------------------+------------+
 
 
-
-+----------------------------+---------+----------------------------------------------+------------+
-| Parameter name             | Type    | Description                                  | Default    |
-+============================+=========+==============================================+============+
-| name                       | string  | The name of the consumer set by the user.    | None       |
-+----------------------------+---------+----------------------------------------------+------------+
-| url                        | string  | The url for the user or service using the    | None       |
-|                            |         | container.                                   |            |
-+----------------------------+---------+----------------------------------------------+------------+
-
-
-**Example Create consumer: JSON request**
+**Example: Create consumer cURL request**
 
 
 .. code::
 
-      curl -X POST -H 'X-Auth-Token $AUTH-TOKEN -H 'Content-Type: application/json' \
-        -d '{
-            "name": "your consumer name",
-            "url": "{consumerURL}"
-        }' $ENDPOINT/v1/containers/{containerID}/consumers
-
-where:
-
-- {endpoint} is the endpoint for the service
-- $AUTH-TOKEN is the authentication token returned by the identity service
-- {containerID} is the UUID for the container
-- {consumerURL} is the URL for the consumer
-
+      curl -X POST -H 'X-Auth-Token $AUTH-TOKEN' \
+           -H 'Content-Type: application/json' \
+           -d '{
+                 "name": "your consumer name",
+                  "url": "{consumerURL}"
+              }' \
+           $ENDPOINT/v1/containers/{containerID}/consumers
+           
 
 Response
 """"""""""""""""
 
-**Example Create Consumer: JSON response**
+
+
+**Example: Create Consumer JSON response**
 
 
 .. code::

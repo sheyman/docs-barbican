@@ -12,7 +12,7 @@ Delete a secret
 
 Deletes the specified secret.
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 
 +------+-----------------------------------------------------------------------------+
@@ -29,9 +29,17 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
+The following table shows the URI parameter for the request:
+
++----------------------------+---------+---------------------------------+------------+
+| Parameter name             | Type    | Description                     | Default    |
++============================+=========+=================================+============+
+| secretID                   | string  | The UUID for the secret         | None       |
++----------------------------+---------+---------------------------------+------------+
+
 This operation doesn't take a request body.
 
-**Example Delete secret: JSON request**
+**Example: Delete secret cURL request**
 
 
 .. code::
@@ -39,13 +47,9 @@ This operation doesn't take a request body.
    curl -X DELETE -H 'X-Auth-Token: $AUTH-TOKEN' \
         $ENDPOINT/v1/secrets/{secretID}
 
-where:
-
-- {endpoint} is the endpoint for the service
-- $AUTH-TOKEN is the authentication token returned by the identity service
-- {secretID} is the UUID for the secret to be deleted.
 
 Response
 """"""""""""""""
 
-This operation will return an HTTP 204 for a successful delete.  It does not return a response body.
+The operation returns an HTTP 204 Accepted response code, if successful. 
+It does not return a response body.

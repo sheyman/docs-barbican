@@ -10,10 +10,9 @@ Get Containers
 
 Returns a list of a project's containers.
 
-Returned containers will be ordered by creation date; oldest to newest.
+Returned containers are ordered by creation date; oldest to newest.
 
-This table shows the possible response codes for this operation:
-
+The following table shows the possible response codes for this operation:
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -40,7 +39,7 @@ Request
 """"""""""""""""
 
 
-This table shows the URI parameters for the request:
+The following table shows the URI parameters for the request:
 
 +--------+---------+------------------------------------------------------------+
 | Name   | Type    | Description                                                |
@@ -56,49 +55,43 @@ This table shows the URI parameters for the request:
 This operation does not accept a request body.
 
 
-**Example Get Containers: JSON request**
+**Example: Get containers cURL request**
 
 
 .. code::
 
-    curl -H 'Accept: application/json' -H 'X-Auth-Token:$AUTH-TOKEN'\
-    $ENDPOINT/v1/containers?offset={offset}&limit={limit}
-
-where:
-
-- {endpoint} is the endpoint for the service
-- $AUTH-TOKEN is the authentication token returned by the identity service
-- {offset} is the offset into the list of containers where the returned list will start
-- {limit} is the max number of containers to return in the list
+    curl -H 'Accept: application/json' \
+         -H 'X-Auth-Token:$AUTH-TOKEN' \
+         $ENDPOINT/v1/containers?offset={offset}&limit={limit}
 
 
 Response
 """"""""""""""""
 
-This table shows the response parameters for the request:
+The following table shows the response parameters for the request:
 
 +------------+---------+--------------------------------------------------------+
 | Name       | Type    | Description                                            |
 +============+=========+========================================================+
-| containers | list    | Contains a list of dictionaries filled with container  |
-|            |         | data                                                   |
+|containers  | list    | Returns a list of dictionaries with information about  |
+|            |         | each container that has been created in Cloud Keep.    |
 +------------+---------+--------------------------------------------------------+
-| total      | integer | The total number of containers available to the user   |
+|total       | integer | The total number of containers available to the user   |
 +------------+---------+--------------------------------------------------------+
-| next       | string  | A HATEOAS url to retrieve the next set of containers   |
+|next        | string  | A HATEOAS url to retrieve the next set of containers   |
 |            |         | based on the offset and limit parameters. This         |
 |            |         | attribute is only available when the total number of   |
 |            |         | containers is greater than offset and limit parameter  |
 |            |         | combined.                                              |
 +------------+---------+--------------------------------------------------------+
-| previous   | string  | A HATEOAS url to retrieve the previous set of          |
+|previous    | string  | A HATEOAS url to retrieve the previous set of          |
 |            |         | containers based on the offset and limit parameters.   |
 |            |         | This attribute is only available when the request      |
 |            |         | offset is greater than 0.                              |
 +------------+---------+--------------------------------------------------------+
 
 
-**Example Get Containers: JSON response**
+**Example: Get containers JSON response**
 
 
 .. code::
@@ -124,8 +117,3 @@ This table shows the response parameters for the request:
         "total": 1
       }
 
-where:
-
-- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
-- the secret ID is 485950f0-37a5-4ba4-b1d6-413f79b849ef
-- the endpoint is iad.keep.api.rackspacecloud.com

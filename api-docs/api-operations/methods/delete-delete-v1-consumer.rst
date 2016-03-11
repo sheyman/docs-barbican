@@ -38,7 +38,7 @@ The following table shows the URI parameters for the request:
 
 This operation does not require a response body.
 
-**Example Delete consumer: JSON request**
+**Example: Delete consumer cURL request**
 
 .. code::
 

@@ -14,7 +14,7 @@ This method creates and stores a secret.
     The POST request always creates and stores secret metadata. If a payload is provided with the POST request, it is encrypted and stored, and then linked with this metadata. If no payload is provided in the POST request, it must be provided in a subsequent PUT request.
 
 
-This table shows possible response codes for this operation:
+The following table shows possible response codes for this operation:
 
 
 +--------------------------+-------------------------+-------------------------+
@@ -65,7 +65,7 @@ Request
 """"""""""""""""
 
 
-This table shows the body parameters for the request:
+The following table shows the body parameters for the request:
 
 +-----------------------------+---------------------+--------------------------+
 |Name                         |Type                 |Description               |
@@ -175,7 +175,7 @@ This table shows the body parameters for the request:
 |                             |                     |normalizes some formats   |
 |                             |                     |before storing them as    |
 |                             |                     |secret metadata, for      |
-|                             |                     |example "text/plain;      |
+|                             |                     |example,"text/plain;      |
 |                             |                     |charset=utf-8" is         |
 |                             |                     |converted to              |
 |                             |                     |"text/plain." Retrieved   |
@@ -217,7 +217,7 @@ This table shows the body parameters for the request:
 +-----------------------------+---------------------+--------------------------+
 
 
-**Example Create Secret: JSON request**
+**Example:Create Secret: JSON request**
 
 
 .. code::
@@ -242,7 +242,7 @@ where:
 Response
 """"""""""""""""
 
-**Example Create Secret: JSON response**
+**Example:Create Secret: JSON response**
 
 
 .. code::

@@ -8,13 +8,21 @@ Update Secret
 
     PUT /{version}/secrets/{secret_id}
 
-This method stores a payload for the specified secret.
+This method stores the payload for an existing secret that was created without a payload.
+To provide secret information after the secret is created, submit a PUT request to the 
+URI that contains the secret ID of the secret you want to update. The PUT request should 
+include the payload, as well as the appropriate Content-Type and Content-Encoding 
+definitions.
 
-This method sets the payload for an existing secret when that secret was created without a payload.
-To provide secret information after the secret is created, submit a PUT request to the URI that contains the secret ID of the secret you want to update. Note that you can only make PUT request once after a POST call that does not include a payload. Also note that no other attributes of a secret can be modified via PUT.  The PUT request should include the payload, as well as the appropriate Content-Type and Content-Encoding definitions.
+
+.. note::
+
+   You can only make PUT request once after a POST operation that does not 
+   include a payload. Also note that you cannot modify any other attributes for 
+   a secret resource by using the PUT operation.
 
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 
 +--------------------------+-------------------------+-------------------------+
@@ -63,7 +71,7 @@ Request
 """"""""""""""""
 
 
-This table shows the URI parameters for the request:
+The following table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
@@ -73,38 +81,33 @@ This table shows the URI parameters for the request:
 |                          |                         |a secret that has been   |
 |                          |                         |stored.                  |
 +--------------------------+-------------------------+-------------------------+
-
-
+|{secretDataFile}          |Binary                   |A file containing the    |
+|                          |                         |binary data to be stored | 
+|                          |                         |as the secret payload.   |
++--------------------------+-------------------------+-------------------------+
 
 
 
 This operation does not accept a request body.
 
 
-**Example Update Secret: JSON request**
+**Example: Update secret cURL request**
 
 
 .. code::
 
-   curl -X PUT -H 'Content-Type: application/octet-stream' -H 'X-Auth-Token: $AUTH-TOKEN' \
+   curl -X PUT -H 'Content-Type: application/octet-stream' \
+        -H 'X-Auth-Token: $AUTH-TOKEN' \
         -T {secretDataFile} $ENDPOINT/v1/secrets/a83018d1-e657-4957-9ddd-42a479753e6b
 
-where:
-
-- {endpoint} is the endpoint for the service
-- $AUTH-TOKEN is the authentication token returned by the identity service
-- {secretDataFile} is a file containing the binary data to be stored as the secret payload.
 
 ..  note::
-    The -T option to curl is used to send the contents of the specified file as the body of the
-    request.  For more information see https://curl.haxx.se/docs/manual.html.
+    The -T option to curl is used to send the contents of the specified file as the 
+    body of the request.  For more information see https://curl.haxx.se/docs/manual.html.
 
 
 Response
 """"""""""""""""
 
-
-**Example Update Secret: JSON response**
-
-
-The successful response will be an HTTP 204 return code, with no content.
+The operation returns an HTTP 204 Accepted response code, if successful. 
+It does not return a response body.

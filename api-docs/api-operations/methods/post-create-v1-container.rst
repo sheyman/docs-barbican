@@ -31,9 +31,7 @@ This type of container is designed to hold a reference to a certificate and
 optionally private_key, private_key_passphrase, and intermediates.
 
 
-This table shows the possible response codes for this operation:
-
-
+The following table shows the possible response codes for this operation:
 
 +------+-----------------------------------------------------------------------------+
 | Code | Description                                                                 |
@@ -54,23 +52,31 @@ Request
 There are no URL parameters for this request.
 
 
-This table shows the body parameters for the request:
+The following table shows the body parameters for the request:
 
 
-+-------------+--------+-----------------------------------------------------------+
-| Name        | Type   | Description                                               |
-+=============+========+===========================================================+
-| name        | string | (optional) Human readable name for identifying your       |
-|             |        | container                                                 |
-+-------------+--------+-----------------------------------------------------------+
-| type        | string | Type of container. Options: generic, rsa, certificate     |
-+-------------+--------+-----------------------------------------------------------+
-| secret_refs | list   | A list of dictionaries containing references to secrets   |
-+-------------+--------+-----------------------------------------------------------+
++----------------+--------+--------------------------------------------------------+
+| Name           | Type   | Description                                            |
++================+========+========================================================+
+|**type**        | string | Type of container. Options: ``generic``, ``rsa``, and  |   
+|                |        | ``certificate``.                                       |
++----------------+--------+--------------------------------------------------------+
+|**name**        | string | (optional) Human readable name for identifying your    |
+|                |        | container                                              |
++----------------+--------+--------------------------------------------------------+
+|**secret_refs** | list   | A list of dictionaries containing references to secrets|
++----------------+--------+--------------------------------------------------------+
+|secret_refs.\   | string |The name assigned to the secret resource when it was    |
+|**name**        |        |created.                                                |
++----------------+--------+--------------------------------------------------------+
+|secret_refs.\   | URI    | A HATEOAS url to retrieve information about the        |
+|**secret_ref**  |        | specified secret.                                      |
++----------------+--------+--------------------------------------------------------+
+|**secretID**    | string | The UUID for the secret to be added to the container.  |                         
++----------------+--------+--------------------------------------------------------+
 
 
-
-**Example Create Container: JSON request**
+**Example: Create Container cURL request**
 
 
 .. code::
@@ -87,20 +93,25 @@ This table shows the body parameters for the request:
             ]
         }' $ENDPOINT/v1/containers
 
-where:
-
-- {endpoint} is the endpoint for the service
-- $AUTH-TOKEN is the authentication token returned by the identity service
-- {secretID} is the UUID for the secret to be added in the container.
-
-
 
 Response
 """"""""""""""""
 
+The following table shows the response parameters for this request.
+
++-------------------+---------+----------------------------------------------------+
+| Parameter name    | Type    | Description                                        |
++===================+=========+====================================================+
+|**container_ref**  | URI     |Returns a HATEOS url to retrieve information        |
+|                   |         |about the container resource.                       |
++-------------------+---------+----------------------------------------------------+
+|containerID        | string  | The UUID value assigned to the container.          |
+|                   |         | In the example shown below                         |
+|                   |         | ``containerID=/6ad67bc0-17fd-45ce-b84a-a9be44fe06``|
++-------------------+---------+----------------------------------------------------+
 
 
-**Example Create Container: JSON response**
+**Example: Create Container JSON response**
 
 
 .. code::
@@ -109,7 +120,3 @@ Response
        "container_ref": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b"
    }
 
-where:
-
-- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
-- the endpoint is iad.keep.api.rackspacecloud.com
