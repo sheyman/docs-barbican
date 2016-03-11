@@ -12,7 +12,7 @@ This method retrieves all secrets for a given tenant.
 
 
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 
 +--------------------------+-------------------------+-------------------------+
@@ -39,7 +39,7 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-This table shows the URI parameters for the request:
+The following table shows the URI parameters for the request:
 
 +--------+---------+------------------------------------------------------------+
 | Name   | Type    | Description                                                |
@@ -54,27 +54,21 @@ This table shows the URI parameters for the request:
 This operation does not take a request body.
 
 
-**Example Delete Secret: JSON request**
+**Example: Delete secret cURL request**
 
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Auth-Token: {authToken}' \
-   https://{endpoint}/v1/secrets?offset={offset}&limit={limit}
+   curl -H 'Accept: application/json' \
+        -H 'X-Auth-Token: $AUTH-TOKEN' \
+        $ENDPOINT/v1/secrets?offset={offset}&limit={limit}
 
-
-where:
-
-- {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
-- {offset} is the offset into the list of secrets where the returned list will start
-- {limit} is the max number of secrets to return in the list
 
 Response
 """"""""""""""""
 
 
-This table shows the response parameters for the request:
+The following table shows the response parameters for the request:
 
 +------------+---------+--------------------------------------------------------+
 | Name       | Type    | Description                                            |
@@ -96,8 +90,10 @@ This table shows the response parameters for the request:
 |            |         | offset is greater than 0.                              |
 +------------+---------+--------------------------------------------------------+
 
+The following response examples shows the resutls of sending an API request where the 
+offset is 0 and the limit is 2. 
 
-**Example Get Secrets: JSON response**
+**Example: Get secrets JSON response**
 
 
 .. code::
@@ -138,8 +134,3 @@ This table shows the response parameters for the request:
        "previous": "https://iad.keep.api.rackspacecloud.com/v1/secrets?limit=2&offset=0"
    }
 
-where:
-
-- the initial request specified a limit of 2 and offset of 0
-- the secret IDs are 15108db8-4505-4c5b-96b9-a9838951f28f and 485950f0-37a5-4ba4-b1d6-413f79b849ef
-- the endpoint is iad.keep.api.rackspacecloud.com

@@ -13,7 +13,7 @@ Lists a container's consumers.
 
 The list of consumers can be filtered by the parameters passed in via the URL.
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 
 +--------------------------+-------------------------+-------------------------+
@@ -43,32 +43,26 @@ Request
 
 The following table shows the URI parameters for the request:
 
-+----------+---------+----------------------------------------------------------------+
-| Name     | Type    | Description                                                    |
-+==========+=========+================================================================+
-| offset   | integer | The starting index within the total list of the consumers that |
-|          |         | you would like to retrieve.                                    |
-+----------+---------+----------------------------------------------------------------+
-| limit    | integer | The maximum number of records to return (up to 100). The       |
-|          |         | default limit is 10.                                           |
-+----------+---------+----------------------------------------------------------------+
++--------------+------------+------------------------------------------------------------+
+| Name         | Type       | Description                                                |
++==============+============+============================================================+
+|{containerID} |integer     | The UUID for the container you would like to retrieve.     |
++--------------+------------+------------------------------------------------------------+
+|{offset}      |integer     | The starting index within the total list of the consumers  |
+|              |*(Optional)*| that you would like to retrieve.                           |
++--------------+------------+------------------------------------------------------------+
+|{limit}       |integer     | The maximum number of records to return (up to 100). The   |
+|              |*(Optional)*| default limit is 10.                                       |
++--------------+------------+------------------------------------------------------------+
 
 
-**Example Get container's consumers: JSON request**
+**Example: Get consumers for a container cURL request**
 
 
 .. code::
 
-    curl -H 'Accept: application/json' -H 'X-Auth-Token:{authToken}'\
-    https://{endpoint}/v1/containers/{containerID}/consumers/?offset={offset}&limit={limit}
-
-where:
-
-- {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
-- {containerID} is a the UUID for the container
-- {offset} is the offset into the list of consumers where the returned list will start
-- {limit} is the max number of consumers to return in the list
+    curl -H 'Accept: application/json' -H 'X-Auth-Token:$AUTH-TOKEN'\
+    $ENDPOINT/v1/containers/{containerID}/consumers/?offset={offset}&limit={limit}
 
 
 Response
@@ -76,24 +70,41 @@ Response
 
 The following table shows the response parameters for this request.
 
-+----------+---------+---------------------------------------------------------------+
-| Name     | Type    | Description                                                   |
-+==========+=========+===============================================================+
-|consumers | list    | Contains a list of dictionaries filled with consumer metadata.|
-+----------+---------+---------------------------------------------------------------+
-| total    | integer | The total number of consumers available to the user.          |
-+----------+---------+---------------------------------------------------------------+
-| next     | string  | A HATEOAS url to retrieve the next set of consumers based on  |
-|          |         | the offset and limit parameters. This attribute is only       |
-|          |         | available when the total number of consumers is greater than  |
-|          |         | offset and limit parameter combined.                          |
-+----------+---------+---------------------------------------------------------------+
-| previous | string  | A HATEOAS url to retrieve the previous set of consumers based |
-|          |         | on the offset and limit parameters. This attribute is only    |
-|          |         | available when the request offset is greater than 0.          |
-+----------+---------+---------------------------------------------------------------+
++-------------+---------+---------------------------------------------------------------+
+| Name        | Type    | Description                                                   |
++=============+=========+===============================================================+
+|**total**    | integer | Returns the number of consumers in the specified container.   |
++-------------+---------+---------------------------------------------------------------+
+|**consumers**| dict    | Returns a dictionary of consumer information for the specified|
+|             |         | consumers resource.                                           |
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | string  | Returns the current state for the specified consumer          |
+|**status**   |         |                                                               |    
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | string  | Returns the URL for the user or service using the container.  |
+|**URL**      |         | for the containers resource.                                  |
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | date    | The date and time that the consumer was last updated.         |
+|**updated**  |         |                                                               |
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | string  | The name of the consumer set by the user.                     |
+|**name**     |         |                                                               |
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | date    | The date and time that the consumer was created.              |
+|**created**  |         | consumers resource.                                           |
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | URI     | A HATEOAS url to retrieve the next set of consumers based on  |
+|**next**     |         | the offset and limit parameters. This attribute is only       |
+|             |         | available when the total number of consumers is greater than  |
+|             |         | offset and limit parameter combined.                          |
++-------------+---------+---------------------------------------------------------------+
+|consumers.\  | string  | A HATEOAS url to retrieve the previous set of consumers based |
+|**previous** |         | on the offset and limit parameters. This attribute is only    |
+|             |         | available when the request offset is greater than 0.          |
++-------------+---------+---------------------------------------------------------------+
 
-**Example Get container's consumers: JSON response**
+
+**Example: Get consumers for a specified container JSON response**
 
 
 .. code::
@@ -125,7 +136,7 @@ The following table shows the response parameters for this request.
         ]
       }
 
-**Example Get container's consumers with offset and limit parameters: JSON response**
+**Example: Get consumers for container with offset and limit parameters JSON response**
 
 .. code::
 
@@ -144,7 +155,3 @@ The following table shows the response parameters for this request.
         "previous": "https://iad.keep.api.rackspacecloud.com/v1/containers/6ad67bc0-17fd-45ce-b84a-a9be44fe069b/consumers?limit=1&offset=0"
      }
 
-where:
-
-- the container ID is 6ad67bc0-17fd-45ce-b84a-a9be44fe069b
-- the endpoint is iad.keep.api.rackspacecloud.com

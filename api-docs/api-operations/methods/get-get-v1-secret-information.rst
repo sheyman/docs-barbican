@@ -10,7 +10,7 @@ Get secret metadata
 
 This method retrieves the metadata for the specified secret.
 
-This table shows possible response codes for this operation:
+The following table shows possible response codes for this operation:
 
 
 +--------------------------+-------------------------+-------------------------+
@@ -34,28 +34,55 @@ This operation does not accept a request body.
 
 
 
-**Example Get Secret Metadata: JSON request**
+**Example: Get secret metadata cURL requestt**
 
 
 .. code::
 
-   curl -H 'Accept: application/json' -H 'X-Auth-Token: {authToken}'\
-   https://{endpoint}/v1/secrets/secretID/{secretID}
+   curl -H 'Accept: application/json' 
+        -H 'X-Auth-Token: $AUTH-TOKEN'\
+        $ENDPOINT/v1/secrets/secretID/{secretID}
 
-
-where:
-
-- {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
-- {secretID} is the UUID for the secret to be deleted.
 
 
 Response
 """"""""""""""""
 
+The following table shows the response parameters for this request.
 
-**Example Get Secret Information: JSON response**
++---------------+---------+-------------------------------------------------------------+
+| Name          | Type    | Description                                                 |
++===============+=========+=============================================================+
+|status         | integer | Returns the current state of secret resource.               |
++---------------+---------+-------------------------------------------------------------+
+|secret_ref     | URI     | Returns a HATEOAS url to retrieve information about the     |
+|               |         | the specified secret.                                       |
++---------------+---------+-------------------------------------------------------------+
+|updated        | date    |Returns the date and time that the consumer was last updated.|
++---------------+---------+-------------------------------------------------------------+
+|name           | string  |Returns the name assigned to the secret resource when it was |
+|               |         |created.                                                     |
++---------------+---------+-------------------------------------------------------------+
+|algorithm      | string  |Returns the algorithm type used to generate the secret.      |
++---------------+---------+-------------------------------------------------------------+
+|created        | date    |Returns the date and time that the secret was created.       |
++---------------+---------+-------------------------------------------------------------+
+|content_types  | dict    |Returns a dictionary of content type information for the     |
+|               |         |resource. Supported formats are                              |
+|               |         |plain text format (``text/plain``) or binary format          |
+|               |         |(``application/octet-stream``). Content types are            |
+|               |         |specified when the resource is created.                      |
++---------------+---------+-------------------------------------------------------------+
+|mode           | string  |Returns the type/mode of the algorithm associated with the   |
+|               |         |secret information. This parameter is optional.              |
++---------------+---------+-------------------------------------------------------------+
+|bit_length     | integer |Returns the bit length of the secret resource if available.  |
++---------------+---------+-------------------------------------------------------------+
+|expiration     | date    | Returns the expiration date for the secret resource.        |
++---------------+---------+-------------------------------------------------------------+
 
+
+**Example: Get secret information JSON response**
 
 .. code::
 
@@ -74,8 +101,3 @@ Response
        "expiration": "2014-05-28T19:14:44.180394"
    }
 
-
-where:
-
-- the secret ID is 485950f0-37a5-4ba4-b1d6-413f79b849ef
-- the endpoint is iad.keep.api.rackspacecloud.com

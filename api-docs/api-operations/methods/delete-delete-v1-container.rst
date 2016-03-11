@@ -10,7 +10,7 @@ Delete a container
 
 Deletes a container.
 
-This table shows the possible response codes for this operation:
+The following table shows the possible response codes for this operation:
 
 +------+-----------------------------------------------------------------------------+
 | Code | Description                                                                 |
@@ -27,23 +27,28 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-This operation does not accept a request body.
+The following table shows the URI parameters for the request:
 
-**Example Delete container: JSON request**
++----------------------------+---------+---------------------------------+------------+
+| Parameter name             | Type    | Description                     | Default    |
++============================+=========+=================================+============+
+|containerID                 | string  | The UUID for the container      | None       |
++----------------------------+---------+---------------------------------+------------+
+
+This operation does not require a response body.
+
+
+**Example: Delete container cURL request**
 
 
 .. code::
 
-   curl -X DELETE -H 'X-Auth-Token: {authToken}' \
-        https://{endpoint}/v1/containers/{containerID}
+   curl -X DELETE -H 'X-Auth-Token: $AUTH-TOKEN' \
+        $ENDPOINT/v1/containers/{containerID}
 
-where
-
-- {endpoint} is the endpoint for the service
-- {authToken} is the authentication token returned by the identity service
-- {containerID} is the UUID for the container to be deleted.
 
 Response
 """"""""""""""""
 
-This operation will return an HTTP 204 for a successful delete.  It does not return a response body.
+The operation returns an HTTP 204 Accepted response code, if successful. 
+It does not return a response body.
